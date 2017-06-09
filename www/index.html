@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" /> 
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script type="text/javascript" charset="utf-8" src="js/functions.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script src="https://maps.googleapis.com/maps/api/js?key=API_KEY_FOR_ANDROID&callback=initMap" async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript">
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available 
+    ///
+    function onDeviceReady() {
+		document.addEventListener("backbutton", BotonBackCel, false);
+		loadscreen(0);
+		setTimeout(function() {
+        loadscreen(1);
+    }, 2000);
+    }
+	function loadscreen(dato){
+		if(dato==0){
+			document.getElementById("load").className="display";			
+		}
+		else if(dato==1){
+			document.getElementById("load").className="hide";		
+		}
+	}
+	function BotonBackCel() {
+		submenu(1);
+	}
+
+    </script>
+	<script>
+// ----------- form contacto
+	$(document).ready(function() {
+$("#formcontacto1").submit(function(){
+$(".error").hide();
+var hasError = false; 
+var nombre = $("#nombre").val();
+var correo = $("#correo").val();
+var mensaje = $("#mensaje").val();
+
+if($.trim(nombre) == "") {
+	$("#nombre").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
+	$("#nombre").focus();
+	hasError = true;
+}
+else if($.trim(correo) =="") {
+$("#correo").after('<br><span class="error" style="color:#f6892e;">Ingresar Correo</span>');
+	$("#correo").focus();
+hasError = true;
+}
+else if($.trim(mensaje) == "") {
+$("#mensaje").after('<br><span class="error" style="color:#f6892e;">Ingresar Mensaje</span>');
+	$("#mensaje").focus();
+hasError = true;
+}
+
+if(hasError == false) {
+$(this).hide();
+$.ajax({
+type:"POST",
+url: "http://grupopetroil.com.mx/formularios/form-contacto.php",
+data : ({
+nombre:nombre,
+correo:correo,
+mensaje:mensaje
+
+}),
+success: function(){
+ alert("El mensaje ah sido enviado con exito.");
+},
+error :function(){
+alert("Ocurrio un error, por favor intentar mas tarde.");
+},
+complete : function(){
+$("#formcontacto1")[0].reset();
+$("#formcontacto1").removeAttr("style").show();
+submenu(1);
+}
+});
+}
+return false;
+});
+});
+//---------- form grupo petroil
+	$(document).ready(function() {
+$("#formcontacto2").submit(function(){
+$(".error").hide();
+var hasError = false; 
+var nombre2 = $("#nombre2").val();
+var correo2 = $("#correo2").val();
+var mensaje2 = $("#mensaje2").val();
+
+if($.trim(nombre2) == "") {
+$("#nombre2").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
+	$("#nombre2").focus();
+hasError = true;
+}
+else if($.trim(correo2) =="") {
+$("#correo2").after('<br><span class="error" style="color:#f6892e;">Ingresar Correo</span>');
+	$("#correo2").focus();
+hasError = true;
+}
+else if($.trim(mensaje2) == "") {
+$("#mensaje2").after('<br><span class="error" style="color:#f6892e;">Ingresar Mensaje</span>');
+	$("#mensaje2").focus();
+hasError = true;
+}
+
+if(hasError == false) {
+$(this).hide();
+$.ajax({
+type:"POST",
+url: "http://grupopetroil.com.mx/formularios/form-grupopetroil.php",
+data : ({ 
+nombre2:nombre2, 
+correo2:correo2,
+mensaje2:mensaje2
+
+}),
+success: function(){
+ alert("El mensaje ah sido enviado con exito.");
+},
+error :function(){
+alert("Ocurrio un error, por favor intentar mas tarde.");
+},
+complete : function(){
+$("#formcontacto2")[0].reset();
+$("#formcontacto2").removeAttr("style").show();
+menu(3);grupo(1);
+}
+});
+}
+return false;
+});
+}); 
+// ----------- form redpetroil
+	$(document).ready(function() {
+$("#formcontacto3").submit(function(){
+$(".error").hide();
+var hasError = false; 
+var nombre3 = $("#nombre3").val();
+var correo3 = $("#correo3").val();
+var mensaje3 = $("#mensaje3").val();
+
+if($.trim(nombre3) == "") {
+$("#nombre3").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
+	$("#nombre3").focus();
+hasError = true;
+}
+else if($.trim(correo3) =="") {
+$("#correo3").after('<br><span class="error" style="color:#f6892e;">Ingresar Correo</span>');
+	$("#correo3").focus();
+hasError = true;
+}
+else if($.trim(mensaje3) == "") {
+$("#mensaje3").after('<br><span class="error" style="color:#f6892e;">Ingresar Mensaje</span>');
+	$("#mensaje3").focus();
+hasError = true;
+}
+
+if(hasError == false) {
+$(this).hide();
+$.ajax({
+type:"POST",
+url: "http://grupopetroil.com.mx/formularios/form-redpetroil.php",
+data : ({ 
+nombre3:nombre3, 
+correo3:correo3,
+mensaje3:mensaje3
+
+}),
+success: function(){
+ alert("El mensaje ah sido enviado con exito.");
+},
+error :function(){
+alert("Ocurrio un error, por favor intentar mas tarde.");
+},
+complete : function(){
+$("#formcontacto3")[0].reset();
+$("#formcontacto3").removeAttr("style").show();
+menu(3);grupo(2);
+}
+});
+}
+return false;
+});
+}); 
+	// ----------- form petroil
+	$(document).ready(function() {
+$("#formcontacto4").submit(function(){
+$(".error").hide();
+var hasError = false; 
+var nombre4 = $("#nombre4").val();
+var correo4 = $("#correo4").val();
+var mensaje4 = $("#mensaje4").val();
+
+if($.trim(nombre4) == "") {
+$("#nombre4").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
+	$("#nombre4").focus();
+hasError = true;
+}
+else if($.trim(correo4) =="") {
+$("#correo4").after('<br><span class="error" style="color:#f6892e;">Ingresar Correo</span>');
+	$("#correo4").focus();
+hasError = true;
+}
+else if($.trim(mensaje4) == "") {
+$("#mensaje4").after('<br><span class="error" style="color:#f6892e;">Ingresar Mensaje</span>');
+	$("#mensaje4").focus();
+hasError = true;
+}
+
+if(hasError == false) {
+$(this).hide();
+$.ajax({
+type:"POST",
+url: "http://grupopetroil.com.mx/formularios/form-petroil.php",
+data : ({ 
+nombre4:nombre4, 
+correo4:correo4,
+mensaje4:mensaje4
+
+}),
+success: function(){
+ alert("El mensaje ah sido enviado con exito.");
+},
+error :function(){
+alert("Ocurrio un error, por favor intentar mas tarde.");
+},
+complete : function(){
+$("#formcontacto4")[0].reset();
+$("#formcontacto4").removeAttr("style").show();
+menu(3);grupo(3);
+}
+});
+}
+return false;
+});
+}); 
+	// ----------- form guzman
+	$(document).ready(function() {
+$("#formcontacto5").submit(function(){
+$(".error").hide();
+var hasError = false; 
+var nombre5 = $("#nombre5").val();
+var correo5 = $("#correo5").val();
+var mensaje5 = $("#mensaje5").val();
+
+if($.trim(nombre5) == "") {
+$("#nombre5").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
+	$("#nombre5").focus();
+hasError = true;
+}
+else if($.trim(correo5) =="") {
+$("#correo5").after('<br><span class="error" style="color:#f6892e;">Ingresar Correo</span>');
+	$("#correo5").focus();
+hasError = true;
+}
+else if($.trim(mensaje5) == "") {
+$("#mensaje5").after('<br><span class="error" style="color:#f6892e;">Ingresar Mensaje</span>');
+	$("#mensaje5").focus();
+hasError = true;
+}
+
+if(hasError == false) {
+$(this).hide();
+$.ajax({
+type:"POST",
+url: "http://grupopetroil.com.mx/formularios/form-guzman.php",
+data : ({ 
+nombre5:nombre5, 
+correo5:correo5,
+mensaje5:mensaje5
+
+}),
+success: function(){
+ alert("El mensaje ah sido enviado con exito.");
+},
+error :function(){
+alert("Ocurrio un error, por favor intentar mas tarde.");
+},
+complete : function(){
+$("#formcontacto5")[0].reset();
+$("#formcontacto5").removeAttr("style").show();
+menu(3);grupo(4);
+}
+});
+}
+return false;
+});
+});  
+	// ----------- form mexcapital
+	$(document).ready(function() {
+$("#formcontacto6").submit(function(){
+$(".error").hide();
+var hasError = false; 
+var nombre6 = $("#nombre6").val();
+var correo6 = $("#correo6").val();
+var mensaje6 = $("#mensaje6").val();
+
+if($.trim(nombre6) == "") {
+$("#nombre6").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
+	$("#nombre6").focus();
+hasError = true;
+}
+else if($.trim(correo6) =="") {
+$("#correo6").after('<br><span class="error" style="color:#f6892e;">Ingresar Correo</span>');
+	$("#correo6").focus();
+hasError = true;
+}
+else if($.trim(mensaje6) == "") {
+$("#mensaje6").after('<br><span class="error" style="color:#f6892e;">Ingresar Mensaje</span>');
+	$("#mensaje6").focus();
+hasError = true;
+}
+
+if(hasError == false) {
+$(this).hide();
+$.ajax({
+type:"POST",
+url: "http://grupopetroil.com.mx/formularios/form-mexcapital.php",
+data : ({ 
+nombre6:nombre6, 
+correo6:correo6,
+mensaje6:mensaje6
+
+}),
+success: function(){
+ alert("El mensaje ah sido enviado con exito.");
+},
+error :function(){
+alert("Ocurrio un error, por favor intentar mas tarde.");
+},
+complete : function(){
+$("#formcontacto6")[0].reset();
+$("#formcontacto6").removeAttr("style").show();
+menu(3);grupo(5);
+}
+});
+}
+return false;
+});
+}); 
+	// ----------- form atune y sardinas
+	$(document).ready(function() {
+$("#formcontacto7").submit(function(){
+$(".error").hide();
+var hasError = false; 
+var nombre7 = $("#nombre7").val();
+var correo7 = $("#correo7").val();
+var mensaje7 = $("#mensaje7").val();
+
+if($.trim(nombre7) == "") {
+$("#nombre7").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
+	$("#nombre7").focus();
+hasError = true;
+}
+else if($.trim(correo7) =="") {
+$("#correo7").after('<br><span class="error" style="color:#f6892e;">Ingresar Correo</span>');
+	$("#correo7").focus();
+hasError = true;
+}
+else if($.trim(mensaje7) == "") {
+$("#mensaje7").after('<br><span class="error" style="color:#f6892e;">Ingresar Mensaje</span>');
+	$("#mensaje7").focus();
+hasError = true;
+}
+
+if(hasError == false) {
+$(this).hide();
+$.ajax({
+type:"POST",
+url: "http://grupopetroil.com.mx/formularios/form-atunes.php",
+data : ({ 
+nombre7:nombre7, 
+correo7:correo7,
+mensaje7:mensaje7
+
+}),
+success: function(){
+ alert("El mensaje ah sido enviado con exito.");
+},
+error :function(){
+alert("Ocurrio un error, por favor intentar mas tarde.");
+},
+complete : function(){
+$("#formcontacto7")[0].reset();
+$("#formcontacto7").removeAttr("style").show();
+menu(3);grupo(7);
+}
+});
+}
+return false;
+});
+}); 
+	</script>
+    <title>Redpetroil</title>
+</head>
+
+<body onload="onload()"style="margin: 0;">
+	<div id="load" class="hide"></div>
+	<div id="content" class="page-content petropuntos hide">
+	<div id="header-top"></div>
+	<!-- Page content -->
+	<div class="header">	
+		<div class="tittle">
+		<div id="tittle01" class="display"><p>Petropuntos<sup style="font-size: 10px;">®</sup></p></div>
+		<div id="tittle02" class="hide"><p>Ubicaciones</p></div>
+		<div id="tittle03" class="hide"><p>Grupo Petroil</p></div>
+		</div>
+		<audio id="stream" preload>
+		<source src="http://108.163.164.122:9000/redpetroilmp3" type="audio/mpeg"></audio>
+		<script> 
+		
+var statusRadio=0;
+		function radiomusic(){
+		
+	if(statusRadio==0){
+		document.getElementById("stream").play();
+		document.getElementById('radioPl').style.display="none";
+		document.getElementById('radioPp').style.display="block";
+		statusRadio=1;
+	}
+	else if(statusRadio==1){
+		document.getElementById("stream").pause();
+		document.getElementById('radioPp').style.display="none";
+		document.getElementById('radioPl').style.display="block";
+		statusRadio=0;
+	}
+		}
+		</script>
+		<div class="radio" onclick="radiomusic()"><img id="radioPl" src="img/play.png" style="display:block;"><img id="radioPp" src="img/pause.png" style="display:none;"></div>
+	</div>
+	<div id="site-info" class="content-info">
+	<a onclick="window.open('https://www.google.com.mx/', '_blank');"  style="width:130px;background:white;color:black;text-align:center;padding:7px 0px;margin-bottom:2px;">enlace 3</a><br><br>
+	<div onclick="window.open('https://www.google.com.mx/', '_blank', 'location=no');" style="width:130px;background:white;color:black;text-align:center;padding:7px 0px;margin-bottom:2px;">enlace 5</div>
+	<div onclick="javascript:var ref = window.open('https://www.google.com.mx/', '_blank', 'location=no');ref.show();" style="width:130px;background:white;color:black;text-align:center;padding:7px 0px;margin-bottom:2px;">enlace 7</div>
+	<div onclick="javascript:var ref = window.open('https://www.google.com.mx/', '_system', 'location=yes');ref.show();" style="width:130px;background:white;color:black;text-align:center;padding:7px 0px;margin-bottom:2px;">enlace 8 - 1</div>
+	<div onclick="javascript:var ref = window.open('https://www.google.com.mx/', '_blank', 'location=no');ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });" style="width:130px;background:white;color:black;text-align:center;padding:7px 0px;margin-bottom:2px;">enlace 9</div>
+	<div onclick="javascript:var ref = window.open('https://www.google.com.mx/', '_system', 'location=no');" style="width:130px;background:white;color:black;text-align:center;padding:7px 0px;margin-bottom:2px;">enlace 11</div>
+	<div onclick="javascript:var ref = window.open('https://www.google.com.mx/', '_system', 'location=yes');" style="width:130px;background:white;color:black;text-align:center;padding:7px 0px;margin-bottom:2px;">enlace 12</div>
+	
+	<div id="section01" class="hide">
+		<div id="s1-01">
+		<div id="preguntas"><a href="#" onclick="preguntas()"><img src="img/preguntas-icon.png"></a></div>
+		<div class="icon"><img src="img/gota.png"></div>
+		<div class="request-id">
+			<div class="id-points"><button class="marcar index" onclick="telefono()">Consultar Petropuntos</button></div>
+			<div class="id-points-button efecto o"><a href="#" onclick="javascript:var ref = window.open('http://www.redpetroil.com/obtener-tarjeta/', '_blank', 'location=yes');"><p>Solicítala Ahora</p></a></div>
+		</div>
+		</div>
+		<div id="s1-02">
+		<div class="content-img"><img class="img-puntos" src="img/puntos.png"></div>
+		<div class="info p1">
+			<div class="p1-boton efecto o"><button class="marcar puntos" onclick="telefono()">CONOCE TUS PUNTOS</button></div>
+			<div class="p1-boton efecto o"><a href="#" onclick="javascript:var ref = window.open('http://www.redpetroil.com/nuestras-promociones/premios/', '_blank', 'location=yes');">CLICK PARA CONOCER PREMIOS</a></div>
+		</div>
+		</div>
+	</div>
+	<div id="section02" class="hide">
+	<div id="geolocation">
+		<iframe id="mapa-ubicaciones" src="https://www.google.com/maps/d/embed?mid=1vL1MiBsvTnf5UavoAq4AZpXEAyQ&z=6&ll=28.77426615577134,-111.41744995117188&t=m" frameborder="0" style="width:100%;border:0" allowfullscreen></iframe>					
+		</div>
+	</div>
+	<div id="section03" class="hide">
+		<div id="grupo-icon" class="icon"><img src="img/gota.png"></div>
+		<div id="grupo" class="grupo-logos" class="display">
+			<h2>Nuestro Grupo</h2>
+			<a href="#" onclick="grupo(1)"><img src="img/grp-petroil.png"></a>
+			<table class="logos">
+				<tr>
+					<td><a href="#" onclick="grupo(2)"><img src="img/red-petroil.png"></a></td>
+					<td><a href="#" onclick="grupo(3)"><img src="img/petroil-distribucion.png"></a></td>
+				</tr>
+				<tr>
+					<td><a href="#" onclick="grupo(4)"><img src="img/guzman.png"></a></td>
+					<td><a href="#" onclick="grupo(5)"><img src="img/mexcapital.png"></a></td>
+				</tr>
+				<tr>
+					<td><a href="#" onclick="grupo(6)"><img src="img/asamaz.png"></a></td>
+					<td><a href="#" onclick="grupo(7)"><img src="img/atunysardinas.png"></a></td>
+				</tr>
+			</table>
+		</div>
+	<div id="content-grupos" class="hide">
+		<div id="s3-01" class="hide">
+		<div class="grupo-img"><img src="img/grupo-petroil01.png"></div>
+		<div class="info">
+			<a href="#" class="return" onclick="grupo(0)"><img src="img/back.png"></a>
+			<table class="info-logo"><tr><td>
+			<div class="logotipo"><img src="img/grp-petroil.png"></div>
+			</td></tr></table>
+			<p>Grupo Petroil es un corporativo conformado por diferentes empresas que busca contribuir al desarrollo de las comunidades donde tenemos presencia, 
+			fundamentando nuestro desempeño en el respeto a la ética, la calidad de vida de nuestros colaboradores y grupos de interés, el medio ambiente, así 
+			como la contribución para la formación de una mejor sociedad.</p>
+			 <p>Estos cuatro ejes, nos permiten ser más que un proveedor de productos y servicios para nuestros clientes, un aliado comercial y agente de cambio
+			 en la sociedad.</p>
+			 <table class="grupo-boton">
+			 <tr>
+				<td align="left"><div class="boton-link contacto efecto o" onclick="grupo(8);sender(2);"><a href="#" >Contáctanos</a></div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://grupopetroil.com.mx/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
+			</tr>
+			</table>		
+		</div>
+		</div>
+		<div id="s3-02" class="hide">
+			<div class="grupo-img"><img src="img/redpetroil.png"></div>
+		<div class="info">
+			<a href="#" class="return" onclick="grupo(0)"><img src="img/back.png"></a>
+			<table class="info-logo"><tr><td>
+			<div class="logotipo"><img src="img/red-petroil.png"></div>
+			</td></tr></table>
+			<p>Somos la red de gasolineras más grande de Sinaloa con estaciones de servicio en Rosario, Escuinapa, Mazatlán, Culiacán, Guasave y Los Mochis.</p>			 
+			 <p>VENTAJAS COMPETITIVAS:</p>
+			 <ul>
+				<li>Programa de lealtad "Petropuntos".</li>
+				<li>Sistema de facturación inmediata.</li>
+				<li>Venta de tiempo aire en dispensarios.</li>
+				<li>Sistema de control de flotillas "Floticontrol".</li>
+				<li>Centro de atención a clientes.</li>
+			</ul>
+			 <table class="grupo-boton">
+			 <tr>
+				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(3);">Contáctanos</a></div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://www.redpetroil.com', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
+			</tr>
+			</table>
+		
+		</div>
+		</div>
+		<div id="s3-03" class="hide">
+			<div class="grupo-img"><img src="img/petroil.png"></div>
+		<div class="info">
+			<a href="#" class="return" onclick="grupo(0)"><img src="img/back.png"></a>
+			<table class="info-logo"><tr><td>
+			<div class="logotipo"><img src="img/petroil-distribucion.png"></div>
+			</td></tr></table>
+			<p>Empresa 100% mexicana dedicada a la venta y distribución de combustible al mayoreo con plantas distribuidas a lo largo del noroeste y bajío 
+			de la República Mexicana que atiende las necesidades de energéticos de los diferentes sectores económicos de nuestro país.</p>
+			<p>Además de la venta de combustibles, Petroil ofrece los servicios de:</p>
+			 <ul>
+				<li>Programas de crédito y financiamiento.</li>
+				<li>Servicio de fletaje de combustibles.</li>
+				<li>Filtración y descontaminación de tanques.</li>
+				<li>Colocación de barreras contra derrames marítimos.</li>
+				<li>Venta e instalación de tanques, equipo de medición y bombeo.</li>
+				<li>Software para control de flotillas.</li>
+				<li>Sistemas completos de auto abasto llave en mano.</li>
+				<li>Atención a embarcaciones de bandera extranjera.</li>
+			</ul>
+			 <table class="grupo-boton">
+			 <tr>
+				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(4);">Contáctanos</a></div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://petroil.com.mx/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
+			</tr>
+			</table>
+		
+		</div>
+		</div>
+		<div id="s3-04" class="hide">
+			<div class="grupo-img"><img src="img/autocentro.png"></div>
+		<div class="info">
+			<a href="#" class="return" onclick="grupo(0)"><img src="img/back.png"></a>
+			<table class="info-logo"><tr><td>
+			<div class="logotipo"><img src="img/guzman.png"></div>
+			</td></tr></table>
+			<p>Centros de servicio automotriz líderes en el estado de Sinaloa, distribuidores directos de fábrica de la marca Bridgestone/Firestone.</p>
+			<p>Cuenta con servicios de mantenimiento automotriz, venta de llantas para auto, camioneta, camión, agrícola, industrial, OTR, además de un
+			centro camionero, planta de renovado y presencia en Escuinapa, Mazatlán, Culiacán, Guasave y Los Mochis.</p>
+			 <table class="grupo-boton">
+			 <tr>
+				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(5);">Contáctanos</a></div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://www.autocentroguzman.com/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
+			</tr>
+			</table>
+		
+		</div>
+		</div>
+		<div id="s3-05" class="hide">
+			<div class="grupo-img"><img src="img/mexcapital0.png"></div>
+		<div class="info">
+			<a href="#" class="return" onclick="grupo(0)"><img src="img/back.png"></a>
+			<table class="info-logo"><tr><td>
+			<div class="logotipo"><img src="img/mexcapital.png"></div>
+			</td></tr></table>
+			<p>Somos una Sociedad Financiera de Objeto Mñultiple (SOFOM) enfocada a proveer servicios financieros para los sectores productivos primarios, 
+			principalmente la pesca y la agricultura, facilitándoles préstamos de dinero a tasas de interés competitivas.</p>
+			<p>MISIÓN</p>
+			<p>Acercar al sector primario del país, una fuente de financiamiento ágil, accesible y razonable a través de productos financieros que se 
+			adaptan a su necesidad específica.</p>
+			<p>VISIÓN</p>
+			<p>Consolidarse como una empresa líder en financiamiento a los sectores primario/productivo.</p>
+			 <table class="grupo-boton">
+			 <tr>
+				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(6);">Contáctanos</a></div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://www.mexcapital.com.mx/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
+			</tr>
+			</table>
+		
+		</div>
+		</div>
+		<div id="s3-06" class="hide">
+			<div class="grupo-img"><img src="img/asamaz01.png"></div>
+		<div class="info">
+			<a href="#" class="return" onclick="grupo(0)"><img src="img/back.png"></a>
+			<table class="info-logo"><tr><td>
+			<div class="logotipo"><img src="img/asamaz.png"></div>
+			</td></tr></table>
+			<p>TRANSPORTES ASAMAZ es una empresa filial de Petroil que cuenta con una flota de auto tanques propios para brindar el servicio de 
+			transporte de productos a nuestros clientes las 24 horas, los 365 días del año.</p>
+			<p>Las unidades de reparto de ASAMAZ cuentan con el más sofisticado y moderno equipo de medición y bombeo que les permite a nuestros 
+			clientes tener la certeza de que sus combustibles son entregados con la calidad y forma exacta.</p>
+			 <table class="grupo-boton">
+			 <tr>
+				<td align="left"></td>
+				<td align="right"></td>
+			</tr>
+			</table>
+		
+		</div>
+		</div>
+		<div id="s3-07" class="hide">
+			<div class="grupo-img"><img src="img/atunes.png"></div>
+		<div class="info">
+			<a href="#" class="return" onclick="grupo(0)"><img src="img/back.png"></a>
+			<table class="info-logo"><tr><td>
+			<div class="logotipo"><img src="img/atunysardinas.png"></div>
+			</td></tr></table>
+			<p>Atunes y Sardinas de México es una empresa con más de 40 años de experiencia en la comercialización de sardina y anchoveta de 
+			exportación.</p>
+			<p>A través de nuestra propia flota de barcos administrada por la filial Atunes, S.A. de C.V. contamos con capacidad de pesca de 
+			5,000 toneladas anuales</p>
+			<p>Nuestra cobertura se extiende hacia todo el litoral oeste de la península de Baja California con un equipo experimentado y 
+			comprometido con la pesca de sardina y anchoveta de calidad internacional, así como el respeto a las leyes mexicanas de pesca 
+			vigentes y la protección del medio ambiente.</p>
+			 <table class="grupo-boton">
+			 <tr>
+				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(7);">Contáctanos</a></div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://atunesysardinas.com.mx/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
+			</tr>
+			</table>		
+		</div>
+		</div>
+	</div>
+	</div>
+	<div id="section04" class="hide">
+		<div class="icon"><img src="img/gota.png"></div>
+		<div class="info">
+			<a href="#" class="return" onclick="submenu(1)"><img src="img/back.png"></a>
+			<h2>¿POR QUÉ SOLICITARLA?</h2>
+			<p>Con tu tarjeta acumularás PETROPUNTOS<sup style="font-size: 10px;">®</sup> para canjearlos por premios. Cada vez que cargues combustible con nosotros asegúrate de mostrar tu tarjeta
+			al despachador de combustible antes de cargar.</p>
+			<p>Los puntos se cargarán automáticamente en tu tarjeta y aparecerán en un ticket de consumo.</p>
+			<p>Además con tu tarjeta tienes el derecho a promociones exclusivas para los clientes de Redpetroil<sup style="font-size: 10px;">®</sup>.</p>
+			<div onclick="javascript:var ref = window.open('http://www.redpetroil.com/', '_blank', 'location=yes');" style="text-decoration:underline;"><p>Ir al sitio oficial.</p></div>
+			<br>
+			<h1 style="font-weight:bold;">Beneficios que obtendrás al acumular PETROPUNTOS<sup style="font-size: 16px;">®</sup></h1>
+			<br>
+			<table id="help-table">
+			<tr>
+			<td>AHORRA<br>MUCHO MÁS</td>
+			<td>MEDIOS<br>DE PAGO</td>
+			<td>CONTROLA TU GASTO CON FLOTICONTROL</td>
+			</tr>
+			<tr>
+			<td><img src="img/pq-img1.png"></td>
+			<td><img src="img/pq-img2.png"></td>
+			<td><img src="img/pq-img3.png"></td>
+			</tr>
+			<tr>
+			<td>Con nuestra historia, misión, visión y filosofía.</td>
+			<td>Escoge la forma de pago más comoda para ti.</td>
+			<td>El sistema más avanzado de control de combustible y el mayor número de estaciones en Mazatlán.</td>
+			</tr>
+			</table>
+		</div>
+	</div>
+	<div id="contacto" class="display">
+		<div class="icon"><img src="img/gota.png"></div>
+		<div class="info">
+			<h1>Contáctanos</h1><br>	
+		</div>
+		<div  id="contact-info">
+		<div id="form1" class="hide">
+		<a href="#" class="return form-contact" onclick="submenu(1)"><img src="img/back.png"></a>
+		<form id="formcontacto1" method="post">
+		<fieldset class="dataform" data-role="fieldcontain" data-type="horizontal" id="insertfrm" style="border:none;">
+				<input id="nombre" class="campo-contacto" type="text" name="nombre" placeholder="Nombre" ><br>
+				<input id="correo" class="campo-contacto" type="email" name="correo" placeholder="Correo" ><br>
+				<textarea id="mensaje" class="campo-contacto campo-mensaje" type="text" name="mensaje" placeholder="Mensaje" ></textarea><br>
+				<button class="boton-contacto" id="sendmail"/>ENVIAR MENSAJE</button><br>
+		</form>
+		</div>
+		<div id="form2" class="hide">
+		<a href="#" class="return form-contact" onclick="menu(3);grupo(1);"><img src="img/back.png"></a>
+		<form id="formcontacto2" method="post">
+		<fieldset class="dataform" data-role="fieldcontain" data-type="horizontal" id="insertfrm" style="border:none;">
+				<input id="nombre2" class="campo-contacto" type="text" name="nombre2" placeholder="Nombre" ><br>
+				<input id="correo2" class="campo-contacto" type="email" name="correo2" placeholder="Correo" ><br>
+				<textarea id="mensaje2" class="campo-contacto campo-mensaje" type="text" name="mensaje2" placeholder="Mensaje" ></textarea><br>
+				<button class="boton-contacto" id="sendmail"/>ENVIAR MENSAJE</button><br>
+		</form>
+		</div>
+		<div id="form3" class="hide">
+		<a href="#" class="return form-contact" onclick="menu(3);grupo(2);"><img src="img/back.png"></a>
+		<form id="formcontacto3" method="post">
+		<fieldset class="dataform" data-role="fieldcontain" data-type="horizontal" id="insertfrm" style="border:none;">
+				<input id="nombre3" class="campo-contacto" type="text" name="nombre3" placeholder="Nombre" ><br>
+				<input id="correo3" class="campo-contacto" type="email" name="correo3" placeholder="Correo" ><br>
+				<textarea id="mensaje3" class="campo-contacto campo-mensaje" type="text" name="mensaje3" placeholder="Mensaje" ></textarea><br>
+				<button class="boton-contacto" id="sendmail"/>ENVIAR MENSAJE</button><br>
+		</form>
+		</div>
+		<div id="form4" class="hide">
+		<a href="#" class="return form-contact" onclick="menu(3);grupo(3);"><img src="img/back.png"></a>
+		<form id="formcontacto4" method="post">
+		<fieldset class="dataform" data-role="fieldcontain" data-type="horizontal" id="insertfrm" style="border:none;">
+				<input id="nombre4" class="campo-contacto" type="text" name="nombre4" placeholder="Nombre" ><br>
+				<input id="correo4" class="campo-contacto" type="email" name="correo4" placeholder="Correo" ><br>
+				<textarea id="mensaje4" class="campo-contacto campo-mensaje" type="text" name="mensaje4" placeholder="Mensaje" ></textarea><br>
+				<button class="boton-contacto" id="sendmail"/>ENVIAR MENSAJE</button><br>
+		</form>
+		</div>
+		<div id="form5" class="hide">
+		<a href="#" class="return form-contact" onclick="menu(3);grupo(4);"><img src="img/back.png"></a>
+		<form id="formcontacto5" method="post">
+		<fieldset class="dataform" data-role="fieldcontain" data-type="horizontal" id="insertfrm" style="border:none;">
+				<input id="nombre5" class="campo-contacto" type="text" name="nombre5" placeholder="Nombre" ><br>
+				<input id="correo5" class="campo-contacto" type="email" name="correo5" placeholder="Correo" ><br>
+				<textarea id="mensaje5" class="campo-contacto campo-mensaje" type="text" name="mensaje5" placeholder="Mensaje" ></textarea><br>
+				<button class="boton-contacto" id="sendmail"/>ENVIAR MENSAJE</button><br>
+		</form>
+		</div>
+		<div id="form6" class="hide">
+		<a href="#" class="return form-contact" onclick="menu(3);grupo(5);"><img src="img/back.png"></a>
+		<form id="formcontacto6" method="post">
+		<fieldset class="dataform" data-role="fieldcontain" data-type="horizontal" id="insertfrm" style="border:none;">
+				<input id="nombre6" class="campo-contacto" type="text" name="nombre6" placeholder="Nombre" ><br>
+				<input id="correo6" class="campo-contacto" type="email" name="correo6" placeholder="Correo" ><br>
+				<textarea id="mensaje6" class="campo-contacto campo-mensaje" type="text" name="mensaje6" placeholder="Mensaje" ></textarea><br>
+				<button class="boton-contacto" id="sendmail"/>ENVIAR MENSAJE</button><br>
+		</form>
+		</div>
+		<div id="form7" class="hide">
+		<a href="#" class="return form-contact" onclick="menu(3);grupo(7);"><img src="img/back.png"></a>
+		<form id="formcontacto7" method="post">
+		<fieldset class="dataform" data-role="fieldcontain" data-type="horizontal" id="insertfrm" style="border:none;">
+				<input id="nombre7" class="campo-contacto" type="text" name="nombre7" placeholder="Nombre" ><br>
+				<input id="correo7" class="campo-contacto" type="email" name="correo7" placeholder="Correo" ><br>
+				<textarea id="mensaje7" class="campo-contacto campo-mensaje" type="text" name="mensaje7" placeholder="Mensaje" ></textarea><br>
+				<button class="boton-contacto" id="sendmail"/>ENVIAR MENSAJE</button><br>
+		</form>
+		</div>
+		</div>
+
+	</div>
+	</div>
+	<!-- end Page content -->	
+	</div>
+	<!-- hidden menu -->
+	<div id="toggle-menu" class="toggle-menu hide"> 
+		<div id="more-elements" class="sub-elements">
+			<div class="sub-menu" onclick="submenu(2)"><a href="#">Contacto</a></div>
+			<div class="espacio-menu"></div>
+			<div class="sub-menu" onclick="submenu(1)"><a href="#">Inicio</a></div>
+			<div class="espacio-menu"></div>
+		</div>	
+	</div>
+	<!-- end -->
+	<!-- footer menu -->
+	<div id ="menu" class="menu-footer hide">  
+		<table class="menu-elements"> 
+		<tr class="menu-img">
+			<td id="menu01" class="element" onclick="menu(1);"><img src="img/icon01.png"><br>Mis Puntos</td>
+			<td style="background:white;width:1px;height:100%";></td> 
+			<td id="menu02" class="element" onclick="menu(2);"><img src="img/icon02.png"><br>Ubicaciones</td>
+			<td style="background:white;width:1px;height:100%";></td>
+			<td id="menu03" class="element" onclick="menu(3);"><img src="img/icon03.png"><br>Grupo Petroil</td>
+			<td style="background:white;width:1px;height:100%";></td>
+			<td id="menu04" class="element pluss" onclick="show();"><img src="img/icon04.png"><br>Más</td>
+		</tr>
+		</table>
+	</div>
+	<!-- end footer -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+
+</html>
