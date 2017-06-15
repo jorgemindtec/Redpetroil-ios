@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="redpetroil" version="1.6.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="redpetroil" version="2.0.1">
   <name>Redpetroil</name>
   <description>Aplicación informativa Redpetroil.</description>
   <author href="http://mindtec.com.mx/" email="contacto@mindtec.com.mx">Mindtec Software Revolution</author>
-  <content src="www/index.html"/>
+  <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
-  
-  <!--<plugin name="cordova-plugin-inappbrowser"/> -->
   <gap:plugin name="org.apache.cordova.inappbrowser" source="npm"/>
   <feature name="InAppBrowser">
     <param name="ios-package" value="CDVInAppBrowser" />
@@ -15,8 +13,8 @@
   <feature name="http://api.phonegap.com/1.0/network" />
   <access origin="*" onlyInBrowser="true" />
   <platform name="ios">
-    <icon src="www/img/Redpetroil-icon60.png" platform="ios" width="60" height="60"/>
-    <icon src="www/img/Redpetroil-icon120.png" platform="ios" width="120" height="120"/>
+    <icon src="img/Redpetroil-icon60.png" platform="ios" width="60" height="60"/>
+    <icon src="img/Redpetroil-icon120.png" platform="ios" width="120" height="120"/>
   </platform>
   <access origin="*"/>
   <access origin="http://108.163.164.122:9000/redpetroilmp3" />
