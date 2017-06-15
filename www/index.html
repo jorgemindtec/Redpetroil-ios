@@ -53,6 +53,7 @@
     // device APIs are available 
     ///
     function onDeviceReady() {
+	    	window.open = cordova.InAppBrowser.open;
 		document.addEventListener("backbutton", BotonBackCel, false);
 		loadscreen(0);
 		setTimeout(function() {
@@ -483,14 +484,14 @@ var statusRadio=0;
 		<div class="icon"><img src="img/gota.png"></div>
 		<div class="request-id">
 			<div class="id-points"><button class="marcar index" onclick="telefono()">Consultar Petropuntos</button></div>
-			<div class="id-points-button efecto o"><a href="#" onclick="javascript:var ref = window.open('http://www.redpetroil.com/obtener-tarjeta/', '_system');"><p>Solicítala Ahora</p></a></div>
+			<div class="id-points-button efecto o"><a href="#" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/obtener-tarjeta/', '_system', 'hidden=no');"><p>Solicítala Ahora</p></a></div>
 		</div>
 		</div>
 		<div id="s1-02">
 		<div class="content-img"><img class="img-puntos" src="img/puntos.png"></div>
 		<div class="info p1">
 			<div class="p1-boton efecto o"><button class="marcar puntos" onclick="telefono()">CONOCE TUS PUNTOS</button></div>
-			<div class="p1-boton efecto o"><a href="#" onclick="javascript:var ref = window.open('http://www.redpetroil.com/nuestras-promociones/premios/', '_system');">CLICK PARA CONOCER PREMIOS</a></div>
+			<div class="p1-boton efecto o"><a href="#" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/nuestras-promociones/premios/', '_system', 'hidden=no');">CLICK PARA CONOCER PREMIOS</a></div>
 		</div>
 		</div>
 	</div>
@@ -535,7 +536,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o" onclick="grupo(8);sender(2);"><a href="#" >Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://grupopetroil.com.mx/', '_system');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://grupopetroil.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>		
 		</div>
@@ -559,7 +560,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(3);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://www.redpetroil.com', '_system');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.redpetroil.com', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -588,7 +589,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(4);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://petroil.com.mx/', '_system');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://petroil.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -607,7 +608,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(5);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://www.autocentroguzman.com/', '_system');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.autocentroguzman.com/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -630,7 +631,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(6);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://www.mexcapital.com.mx/', '_system');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.mexcapital.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -673,7 +674,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(7);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = window.open('http://atunesysardinas.com.mx/', '_system');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://atunesysardinas.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>		
 		</div>
@@ -689,7 +690,7 @@ var statusRadio=0;
 			al despachador de combustible antes de cargar.</p>
 			<p>Los puntos se cargarán automáticamente en tu tarjeta y aparecerán en un ticket de consumo.</p>
 			<p>Además con tu tarjeta tienes el derecho a promociones exclusivas para los clientes de Redpetroil<sup style="font-size: 10px;">®</sup>.</p>
-			<div onclick="javascript:var ref = window.open('http://www.redpetroil.com/', '_system');" style="text-decoration:underline;"><p>Ir al sitio oficial.</p></div>
+			<div onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/', '_system', 'hidden=no');" style="text-decoration:underline;"><p>Ir al sitio oficial.</p></div>
 			<br>
 			<h1 style="font-weight:bold;">Beneficios que obtendrás al acumular PETROPUNTOS<sup style="font-size: 16px;">®</sup></h1>
 			<br>
