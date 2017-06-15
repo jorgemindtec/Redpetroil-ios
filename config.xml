@@ -5,7 +5,7 @@
   <author href="http://mindtec.com.mx/" email="contacto@mindtec.com.mx">Mindtec Software Revolution</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
-  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm"/>
+  <plugin name="org.apache.cordova.inappbrowser" spec="1.7.1" />
   <feature name="InAppBrowser">
     <param name="ios-package" value="CDVInAppBrowser" />
 </feature>
