@@ -12,10 +12,15 @@
 
   <feature name="http://api.phonegap.com/1.0/network" />
   <access origin="*" onlyInBrowser="true" />
-  <platform name="ios">
-    <icon src="img/Redpetroil-icon60.png" platform="ios" width="60" height="60"/>
-    <icon src="img/Redpetroil-icon120.png" platform="ios" width="120" height="120"/>
-  </platform>
+  
+  <icon src="img/icon.png" />
+  <icon src="img/icon-57.png"            gap:platform="ios"        width="57" height="57" />  
+  <icon src="img/icon-72.png"            gap:platform="ios"        width="72" height="72" />
+  <icon src="img/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
+  <icon src="img/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
+ <!-- <icon src="img/Redpetroil-icon60.png" platform="ios" width="60" height="60"/>
+  <icon src="img/Redpetroil-icon120.png" platform="ios" width="120" height="120"/> -->
+  
   <access origin="*"/>
   <access origin="http://108.163.164.122:9000/redpetroilmp3" />
   <access origin="https://maps.googleapis.com" />
