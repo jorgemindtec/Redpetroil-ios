@@ -325,6 +325,7 @@ button.marcar.puntos {
 }
 #s1-02 .content-img .img-puntos {
     width: 80%;
+    max-width: 460px;
 }
 .info.p1 {
     padding-top: 10% !important;
@@ -552,12 +553,18 @@ button.marcar.puntos {
     font-size: 22px;
     line-height: 70px;
 }
+.request-id {
+    max-width: 390px !important;
+}
+.id-points {
+    margin-bottom: 10px;
+}
 .efecto, .efecto button, .efecto a, .efecto p {
     font-size: 20px !important;
 }
 .marcar {
-    height: 40px !important;
-    line-height: 40px !important;
+    height: 41px !important;
+    line-height: 41px !important;
 }
 #s1-02 .content-img .img-puntos {
     max-width: 520px;
@@ -570,9 +577,15 @@ button.marcar.puntos {
     line-height: 40px;
 }
 .p1-boton {
-    max-width: 400px !important;
+    max-width: 380px !important;
     height: 50px;
     line-height: 50px;
+}
+.marcar.puntos {
+    font-size: 16px !important;
+}
+.p1-boton a {
+    font-size: 16px !important;
 }
 .logos td img {
     max-width: 250px;
