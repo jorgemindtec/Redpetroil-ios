@@ -20,8 +20,9 @@ a {
     text-decoration: none;
     font-size: 14px;
 }
-.menu-elements a, .p1-boton a {
+.menu-elements a, .p1-boton a  p{
     font-size: 10px;
+    text-align: center;
 }
 .page-content {
     background-image: url(../img/fondo.png);
@@ -584,7 +585,7 @@ button.marcar.puntos {
 .marcar.puntos {
     font-size: 16px !important;
 }
-.p1-boton a {
+.p1-boton a p {
     font-size: 16px !important;
 }
 .logos td img {
