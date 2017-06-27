@@ -244,8 +244,12 @@ function grupo(dato){
 }
 
 /* ---- MARCAR TELEFONO ---- */
-function telefono() {	
-	//	window.open('tel:6691180909', '_system');
+function TelefonoConsulta() {	
+	if (window.cordova) {
+		cordova.InAppBrowser.open('tel:6691180909', '_system');
+	}
+}
+function TelefonoPuntos() {	
 	if (window.cordova) {
 		cordova.InAppBrowser.open('tel:6691180909', '_system');
 	}
@@ -281,5 +285,3 @@ function sender(dato){
 	document.getElementById("form7").className="display";		
 	}	
 }
-
-
