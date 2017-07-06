@@ -27,7 +27,8 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <meta http-equiv="Content-Security-Policy" content="img-src * 'self' data:; default-src * 'self' gap: wss: ws: ; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';">
     <!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -37,7 +38,7 @@
     * Create your own at http://cspisawesome.com
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-
+    <meta http-equiv="Content-Security-Policy" content="img-src * 'self' data:; default-src * 'self' gap: wss: ws: ; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';">
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 	<script type="text/javascript" charset="utf-8" src="js/functions.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -484,14 +485,14 @@ var statusRadio=0;
 		<div class="icon"><img src="img/gota.png"></div>
 		<div class="request-id">
 			<div class="id-points efecto"><button class="marcar index" onclick="TelefonoConsulta()">Consultar Petropuntos</button></div>
-			<div class="id-points-button efecto o"><a href="#" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/obtener-tarjeta/', '_system', 'hidden=no');"><p>Solicítala Ahora</p></a></div>
+			<div class="id-points-button efecto o"><a href="#" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/obtener-tarjeta/', '_system', 'hidden=no');"><p>Solicítala Ahora</p></a></div>
 		</div>
 		</div>
 		<div id="s1-02">
 		<div class="content-img"><img class="img-puntos" src="img/puntos.png"></div>
 		<div class="info p1">
 			<div class="p1-boton efecto o"><button class="marcar puntos" onclick="TelefonoPuntos()">CONOCE TUS PUNTOS</button></div>
-			<div class="p1-boton efecto o"><a href="#" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/nuestras-promociones/premios/', '_system', 'hidden=no');"><p>CLIC PARA CONOCER PREMIOS</p></a></div>
+			<div class="p1-boton efecto o"><a href="#" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/nuestras-promociones/premios/', '_system', 'hidden=no');"><p>CLIC PARA CONOCER PREMIOS</p></a></div>
 		</div>
 		</div>
 	</div>
@@ -536,7 +537,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o" onclick="grupo(8);sender(2);"><a href="#" >Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://grupopetroil.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://grupopetroil.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>		
 		</div>
@@ -560,7 +561,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(3);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.redpetroil.com', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -589,7 +590,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(4);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://petroil.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://petroil.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -608,7 +609,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(5);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.autocentroguzman.com/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://www.autocentroguzman.com/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -631,7 +632,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(6);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.mexcapital.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://www.mexcapital.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -674,7 +675,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(7);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="javascript:var ref = cordova.InAppBrowser.open('http://atunesysardinas.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://atunesysardinas.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>		
 		</div>
@@ -690,7 +691,7 @@ var statusRadio=0;
 			al despachador de combustible antes de cargar.</p>
 			<p>Los puntos se cargarán automáticamente en tu tarjeta y aparecerán en un ticket de consumo.</p>
 			<p>Además con tu tarjeta tienes el derecho a promociones exclusivas para los clientes de Redpetroil<sup style="font-size: 10px;">®</sup>.</p>
-			<div onclick="javascript:var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/', '_system', 'hidden=no');" style="text-decoration:underline;width: 150px;"><p>Ir al sitio oficial.</p></div>
+			<div onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/', '_system', 'hidden=no');" style="text-decoration:underline;width: 150px;"><p>Ir al sitio oficial.</p></div>
 			<br>
 			<h1 style="font-weight:bold;">Beneficios que obtendrás al acumular PETROPUNTOS<sup style="font-size: 16px;">®</sup></h1>
 			<br>
@@ -790,7 +791,6 @@ var statusRadio=0;
 		</form>
 		</div>
 		</div>
-
 	</div>
 	</div>
 	<!-- end Page content -->	
