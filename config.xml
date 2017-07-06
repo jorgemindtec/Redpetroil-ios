@@ -5,10 +5,12 @@
   <author href="http://mindtec.com.mx/" email="contacto@mindtec.com.mx">Mindtec Software Revolution</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
-  <plugin name="org.apache.cordova.inappbrowser" spec="1.7.1" />
-  <!--<feature name="InAppBrowser">
+  
+  <gap:plugin name="org.apache.cordova.inappbrowser" spec="1.7.1" />
+  <!--<plugin name="org.apache.cordova.inappbrowser" spec="1.7.1" />-->
+  <feature name="InAppBrowser">
     <param name="ios-package" value="CDVInAppBrowser" />
-</feature>-->
+  </feature>
 
   <feature name="http://api.phonegap.com/1.0/network" />
   <access origin="*" onlyInBrowser="true" />
