@@ -6,8 +6,7 @@
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   
-  <gap:plugin name="org.apache.cordova.inappbrowser" spec="1.7.1" />
-  <!--<plugin name="org.apache.cordova.inappbrowser" spec="1.7.1" />-->
+  <plugin name="org.apache.cordova.inappbrowser" spec="1.7.1" />
   <feature name="InAppBrowser">
     <param name="ios-package" value="CDVInAppBrowser" />
   </feature>
