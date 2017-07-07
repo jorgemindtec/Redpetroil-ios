@@ -432,6 +432,7 @@ button.marcar.puntos {
 }
 .logotipo {
     max-height: 100px;
+    padding-top: 5px;
 }
 .logotipo img {
     max-width: 230px;
