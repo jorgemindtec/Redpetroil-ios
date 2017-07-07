@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!--
     Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -9,9 +8,7 @@
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
     with the License.  You may obtain a copy of the License at
-
     http://www.apache.org/licenses/LICENSE-2.0
-
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -49,7 +46,6 @@
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
-
     // device APIs are available 
     ///
     function onDeviceReady() {
@@ -71,7 +67,6 @@
 	function BotonBackCel() {
 		submenu(1);
 	}
-
     </script>
 	<script>
 // ----------- form contacto
@@ -82,7 +77,6 @@ var hasError = false;
 var nombre = $("#nombre").val();
 var correo = $("#correo").val();
 var mensaje = $("#mensaje").val();
-
 if($.trim(nombre) == "") {
 	$("#nombre").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
 	$("#nombre").focus();
@@ -98,7 +92,6 @@ $("#mensaje").after('<br><span class="error" style="color:#f6892e;">Ingresar Men
 	$("#mensaje").focus();
 hasError = true;
 }
-
 if(hasError == false) {
 $(this).hide();
 $.ajax({
@@ -108,7 +101,6 @@ data : ({
 nombre:nombre,
 correo:correo,
 mensaje:mensaje
-
 }),
 success: function(){
  alert("El mensaje ah sido enviado con exito.");
@@ -134,7 +126,6 @@ var hasError = false;
 var nombre2 = $("#nombre2").val();
 var correo2 = $("#correo2").val();
 var mensaje2 = $("#mensaje2").val();
-
 if($.trim(nombre2) == "") {
 $("#nombre2").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
 	$("#nombre2").focus();
@@ -150,7 +141,6 @@ $("#mensaje2").after('<br><span class="error" style="color:#f6892e;">Ingresar Me
 	$("#mensaje2").focus();
 hasError = true;
 }
-
 if(hasError == false) {
 $(this).hide();
 $.ajax({
@@ -160,7 +150,6 @@ data : ({
 nombre2:nombre2, 
 correo2:correo2,
 mensaje2:mensaje2
-
 }),
 success: function(){
  alert("El mensaje ah sido enviado con exito.");
@@ -186,7 +175,6 @@ var hasError = false;
 var nombre3 = $("#nombre3").val();
 var correo3 = $("#correo3").val();
 var mensaje3 = $("#mensaje3").val();
-
 if($.trim(nombre3) == "") {
 $("#nombre3").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
 	$("#nombre3").focus();
@@ -202,7 +190,6 @@ $("#mensaje3").after('<br><span class="error" style="color:#f6892e;">Ingresar Me
 	$("#mensaje3").focus();
 hasError = true;
 }
-
 if(hasError == false) {
 $(this).hide();
 $.ajax({
@@ -212,7 +199,6 @@ data : ({
 nombre3:nombre3, 
 correo3:correo3,
 mensaje3:mensaje3
-
 }),
 success: function(){
  alert("El mensaje ah sido enviado con exito.");
@@ -238,7 +224,6 @@ var hasError = false;
 var nombre4 = $("#nombre4").val();
 var correo4 = $("#correo4").val();
 var mensaje4 = $("#mensaje4").val();
-
 if($.trim(nombre4) == "") {
 $("#nombre4").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
 	$("#nombre4").focus();
@@ -254,7 +239,6 @@ $("#mensaje4").after('<br><span class="error" style="color:#f6892e;">Ingresar Me
 	$("#mensaje4").focus();
 hasError = true;
 }
-
 if(hasError == false) {
 $(this).hide();
 $.ajax({
@@ -264,7 +248,6 @@ data : ({
 nombre4:nombre4, 
 correo4:correo4,
 mensaje4:mensaje4
-
 }),
 success: function(){
  alert("El mensaje ah sido enviado con exito.");
@@ -290,7 +273,6 @@ var hasError = false;
 var nombre5 = $("#nombre5").val();
 var correo5 = $("#correo5").val();
 var mensaje5 = $("#mensaje5").val();
-
 if($.trim(nombre5) == "") {
 $("#nombre5").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
 	$("#nombre5").focus();
@@ -306,7 +288,6 @@ $("#mensaje5").after('<br><span class="error" style="color:#f6892e;">Ingresar Me
 	$("#mensaje5").focus();
 hasError = true;
 }
-
 if(hasError == false) {
 $(this).hide();
 $.ajax({
@@ -316,7 +297,6 @@ data : ({
 nombre5:nombre5, 
 correo5:correo5,
 mensaje5:mensaje5
-
 }),
 success: function(){
  alert("El mensaje ah sido enviado con exito.");
@@ -342,7 +322,6 @@ var hasError = false;
 var nombre6 = $("#nombre6").val();
 var correo6 = $("#correo6").val();
 var mensaje6 = $("#mensaje6").val();
-
 if($.trim(nombre6) == "") {
 $("#nombre6").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
 	$("#nombre6").focus();
@@ -358,7 +337,6 @@ $("#mensaje6").after('<br><span class="error" style="color:#f6892e;">Ingresar Me
 	$("#mensaje6").focus();
 hasError = true;
 }
-
 if(hasError == false) {
 $(this).hide();
 $.ajax({
@@ -368,7 +346,6 @@ data : ({
 nombre6:nombre6, 
 correo6:correo6,
 mensaje6:mensaje6
-
 }),
 success: function(){
  alert("El mensaje ah sido enviado con exito.");
@@ -394,7 +371,6 @@ var hasError = false;
 var nombre7 = $("#nombre7").val();
 var correo7 = $("#correo7").val();
 var mensaje7 = $("#mensaje7").val();
-
 if($.trim(nombre7) == "") {
 $("#nombre7").after('<br><span class="error" style="color:#f6892e;">Ingresar Nombre</span>');
 	$("#nombre7").focus();
@@ -410,7 +386,6 @@ $("#mensaje7").after('<br><span class="error" style="color:#f6892e;">Ingresar Me
 	$("#mensaje7").focus();
 hasError = true;
 }
-
 if(hasError == false) {
 $(this).hide();
 $.ajax({
@@ -420,7 +395,6 @@ data : ({
 nombre7:nombre7, 
 correo7:correo7,
 mensaje7:mensaje7
-
 }),
 success: function(){
  alert("El mensaje ah sido enviado con exito.");
@@ -484,14 +458,14 @@ var statusRadio=0;
 		<div class="icon"><img src="img/gota.png"></div>
 		<div class="request-id">
 			<div class="id-points efecto"><button class="marcar index" onclick="TelefonoConsulta()">Consultar Petropuntos</button></div>
-			<div class="id-points-button efecto o"><a href="#" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/obtener-tarjeta/', '_system', 'hidden=no');"><p>Solicítala Ahora</p></a></div>
+			<div class="id-points-button efecto o"><a href="#" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/obtener-tarjeta/', '_blank', 'location=yes');"><p>Solicítala Ahora</p></a></div>
 		</div>
 		</div>
 		<div id="s1-02">
 		<div class="content-img"><img class="img-puntos" src="img/puntos.png"></div>
 		<div class="info p1">
 			<div class="p1-boton efecto o"><button class="marcar puntos" onclick="TelefonoPuntos()">CONOCE TUS PUNTOS</button></div>
-			<div class="p1-boton efecto o"><a href="#" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/nuestras-promociones/premios/', '_system', 'hidden=no');"><p>CLIC PARA CONOCER PREMIOS</p></a></div>
+			<div class="p1-boton efecto o"><a href="#" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/nuestras-promociones/premios/', '_blank', 'location=yes');"><p>CLIC PARA CONOCER PREMIOS</p></a></div>
 		</div>
 		</div>
 	</div>
@@ -528,7 +502,7 @@ var statusRadio=0;
 			<table class="info-logo"><tr><td>
 			<div class="logotipo"><img src="img/grp-petroil.png"></div>
 			</td></tr></table>
-			<p>Grupo Petroil es un corporativo conformado por diferentes empresas que busca contribuir al desarrollo de las comunidades donde tenemos presencia, 
+			<p>Grupo Petroil es un corporativo conformado por diferentes empresas que busca contribuir al desarrollo de las comunidades donde tenemos presencia, 
 			fundamentando nuestro desempeño en el respeto a la ética, la calidad de vida de nuestros colaboradores y grupos de interés, el medio ambiente, así 
 			como la contribución para la formación de una mejor sociedad.</p>
 			 <p>Estos cuatro ejes, nos permiten ser más que un proveedor de productos y servicios para nuestros clientes, un aliado comercial y agente de cambio
@@ -536,7 +510,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o" onclick="grupo(8);sender(2);"><a href="#" >Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://grupopetroil.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://grupopetroil.com.mx/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>		
 		</div>
@@ -560,7 +534,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(3);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -589,7 +563,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(4);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://petroil.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://petroil.com.mx/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -608,7 +582,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(5);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://www.autocentroguzman.com/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://www.autocentroguzman.com/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -631,7 +605,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(6);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://www.mexcapital.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://www.mexcapital.com.mx/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>
 		
@@ -674,7 +648,7 @@ var statusRadio=0;
 			 <table class="grupo-boton">
 			 <tr>
 				<td align="left"><div class="boton-link contacto efecto o"><a href="#" onclick="grupo(8);sender(7);">Contáctanos</a></div></td>
-				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://atunesysardinas.com.mx/', '_system', 'hidden=no');">Ir a sitio oficial</div></td>
+				<td align="right"><div class="boton-link sitio efecto b" onclick="var ref = cordova.InAppBrowser.open('http://atunesysardinas.com.mx/', '_blank', 'location=yes');">Ir a sitio oficial</div></td>
 			</tr>
 			</table>		
 		</div>
@@ -690,7 +664,7 @@ var statusRadio=0;
 			al despachador de combustible antes de cargar.</p>
 			<p>Los puntos se cargarán automáticamente en tu tarjeta y aparecerán en un ticket de consumo.</p>
 			<p>Además con tu tarjeta tienes el derecho a promociones exclusivas para los clientes de Redpetroil<sup style="font-size: 10px;">®</sup>.</p>
-			<div onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/', '_system', 'hidden=no');" style="text-decoration:underline;width: 150px;"><p>Ir al sitio oficial.</p></div>
+			<div onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/', '_blank', 'location=yes');" style="text-decoration:underline;width: 150px;"><p>Ir al sitio oficial.</p></div>
 			<br>
 			<h1 style="font-weight:bold;">Beneficios que obtendrás al acumular PETROPUNTOS<sup style="font-size: 16px;">®</sup></h1>
 			<br>
