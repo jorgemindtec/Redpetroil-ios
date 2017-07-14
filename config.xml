@@ -6,6 +6,8 @@
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   
+  <plugin name="cordova.plugins.diagnostic.api-22" />
+  
   <plugin name="cordova-plugin-geolocation" value="CDVLocation" />
   <plugin name="org.apache.cordova.inappbrowser" spec="1.7.1" />
   <feature name="InAppBrowser">
