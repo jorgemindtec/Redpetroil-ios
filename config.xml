@@ -6,8 +6,7 @@
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   
- <!-- <plugin name="cordova-plugin-nativesettings" spec="1.1.0" />-->
-  <plugin name="cordova-plugin-opensettings" spec="1.3" />
+  <plugin name="Cordova-open-native-settings" spec="1.2" />
   
   <feature name="Geolocation">
     <param name="android-package" value="org.apache.cordova.GeoBroker" />
