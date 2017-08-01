@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="grupopetroil" version="2.0.8">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="grupopetroil" version="2.1.0">
   <name>Grupo Petroil</name>
   <description>Aplicación informativa Grupo Petroil.</description>
   <author href="http://mindtec.com.mx/" email="contacto@mindtec.com.mx">Mindtec Software Revolution</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   
-  <plugin name="Cordova-open-native-settings" spec="1.2" />
+  <!--<plugin name="Cordova-open-native-settings" spec="1.2" />-->
   
   <feature name="Geolocation">
     <param name="android-package" value="org.apache.cordova.GeoBroker" />
