@@ -38,17 +38,15 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 	<script type="text/javascript" charset="utf-8" src="js/functions.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<script src="https://maps.googleapis.com/maps/api/js?key=API_KEY_FOR_ANDROID&callback=initMap" async defer></script>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+	<!--<script src="https://maps.googleapis.com/maps/api/js?key=API_KEY_FOR_ANDROID&callback=initMap" async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=True"></script>-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5GeTzIOnS5xWBjP5F76bMxcJhsSViel4&sensor=True"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript">
-    // Wait for device API libraries to load
-    //
     document.addEventListener("deviceready", onDeviceReady, false);
-    // device APIs are available 
-    ///
-    function onDeviceReady() {
+	
+function onDeviceReady() {
 	    	window.open = cordova.InAppBrowser.open;
 		document.addEventListener("backbutton", BotonBackCel, false);
 		loadscreen(0);
@@ -56,7 +54,7 @@
         loadscreen(1);
     }, 2000);
     }
-	function loadscreen(dato){
+function loadscreen(dato){
 		if(dato==0){
 			document.getElementById("load").className="display";			
 		}
@@ -64,11 +62,389 @@
 			document.getElementById("load").className="hide";		
 		}
 	}
-	function BotonBackCel() {
+function BotonBackCel() {
 		submenu(1);
 	}
-    </script>
-	<script>
+
+	var map;
+	var marcador="";
+	var Ubicacion=true;
+	
+function MapaGps(){
+	var GpsOptions = {
+  enableHighAccuracy: true,
+  timeout: 2800,
+  maximumAge: 800
+};
+		navigator.geolocation.getCurrentPosition(Gpson, GpsError, GpsOptions);
+	}
+function Gpson(position){
+
+	var lat=position.coords.latitude;
+	var lang=position.coords.longitude;
+	var myLatlng = new google.maps.LatLng(lat,lang);
+if(Ubicacion==true){
+	var mapOptions = {zoom: 13,center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP};
+	map = new google.maps.Map(document.getElementById('geolocation'), mapOptions);	
+	marcador = new google.maps.Marker({position: myLatlng,map: map});
+	marcador.setMap(map);
+	Ubicacion=false;
+}
+setInterval(function(){
+	marcador.setMap(null);
+	marcador = new google.maps.Marker({position: myLatlng,map: map});
+	marcador.setMap(map);
+	
+	navigator.geolocation.watchPosition(GpsOn, GpsError, {enableHighAccuracy: true});
+}, 5000);
+	
+	Ubicaciones();	
+}
+function GpsError(error) {
+	document.getElementById("gps-message").className="display";
+	marcador.setMap(null);
+	
+	var myLatlng = new google.maps.LatLng(24.67697,-107.166138);
+	var mapOptions = {zoom: 7,center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP};
+	map = new google.maps.Map(document.getElementById('geolocation'), mapOptions);
+	
+	Ubicaciones();
+}
+
+//-------------
+function ActiveGps(){
+	document.getElementById("gps-message").className="hide";
+	MapaGps()
+	}
+function CancelGps(){
+	document.getElementById("gps-message").className="hide";	
+	}
+// --------
+function Ubicaciones(){
+var images = 'img/rdp.png';
+
+//-------------
+var contentStringa = "<b>A) La Marina</b><br>"+
+"Av. Marina Mazatlán #2216<br>"+
+"Fracc. La Marina, Mazatlán Sinaloa<br>"+
+"CP 82102<br>"+
+"Teléfono: (669) 9134052<br>"+
+"No. de Estación: 9326<br>";
+var infowindowa = new google.maps.InfoWindow({
+    content: contentStringa
+  });
+var myLatlng = new google.maps.LatLng(23.27,-106.45159);
+var markera = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markera.addListener('click', function() {
+    infowindowa.open(map, markera);
+  });
+markera.setMap(map);
+//-------------
+var contentStringb = "<b>B) Sábalo</b><br>"+
+"Av. Camarón Sábalo #4709<br>"+
+"Fracc. Sábalo Country Club, Mazatlán Sinaloa<br>"+
+"CP 82100<br>"+
+"Teléfono: (669) 9166600<br>"+
+"No. de Estación: 6517<br>";
+var infowindowb = new google.maps.InfoWindow({
+    content: contentStringb
+  });
+var myLatlng = new google.maps.LatLng(23.25515,-106.45792);
+var markerb = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerb.addListener('click', function() {
+    infowindowb.open(map, markerb);
+  });
+markerb.setMap(map);
+//-------------
+var contentStringc = "<b>C) Insurgentes</b><br>"+
+"Carretera Internacional y Av. Insurgentes SN<br>"+
+"Col. López Mateos, Mazatlán Sinaloa<br>"+
+"CP 82140<br>"+
+"Teléfono: (669) 9842000<br>"+
+"No. de Estación: 1763<br>";
+var infowindowc = new google.maps.InfoWindow({
+    content: contentStringc
+  });
+var myLatlng = new google.maps.LatLng(23.23566, -106.42297);
+var markerc = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerc.addListener('click', function() {
+    infowindowc.open(map, markerc);
+  });
+markerc.setMap(map);
+//-------------
+var contentStringd = "<b>D) Alemán</b><br>"+
+"Av. Miguel Alemán y Aquiles Serdán SN<br>"+
+"Col. Centro, Mazatlán Sinaloa<br>"+
+"CP 82000<br>"+
+"Teléfono: (669) 9820233<br>"+
+"No. de Estación: 1762<br>";
+var infowindowd = new google.maps.InfoWindow({
+    content: contentStringd
+  });
+var myLatlng = new google.maps.LatLng(23.19663, -106.41986);
+var markerd = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerd.addListener('click', function() {
+    infowindowd.open(map, markerd);
+  });
+markerd.setMap(map);
+//-------------
+var contentStringe = "<b>E) 12 de Mayo</b><br>"+
+"Av. Obrero Mundial #2328<br>"+
+"Col. 12 de Mayo, Mazatlán Sinaloa<br>"+
+"CP 82020<br>"+
+"Teléfono: (669) 1181190<br>"+
+"No. de Estación: 11469<br>";
+var infowindowe = new google.maps.InfoWindow({
+    content: contentStringe
+  });
+var myLatlng = new google.maps.LatLng(23.21433, -106.40612);
+var markere = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markere.addListener('click', function() {
+    infowindowe.open(map, markere);
+  });
+markere.setMap(map);
+//-------------
+var contentStringf = "<b>F) Flores Magón</b><br>"+
+"Azalea #4901 esquina con avenida Antonio López Saenz<br>"+
+"Col. Ricardo Flores Magón, Mazatlán Sinaloa<br>"+
+"CP 82190<br>"+
+"Teléfono: (669) 9800160<br>"+
+"No. de Estación: 11549<br>";
+var infowindowf = new google.maps.InfoWindow({
+    content: contentStringf
+  });
+var myLatlng = new google.maps.LatLng(23.24274, -106.38327);
+var markerf = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerf.addListener('click', function() {
+    infowindowf.open(map, markerf);
+  });
+markerf.setMap(map);
+//-------------
+var contentStringg = "<b>G) La Foresta</b><br>"+
+"Av. Manuel J. Clouthier #8002<br>"+
+"Fracc. Infonavit La Foresta, Mazatlán Sinaloa<br>"+
+"CP 82198<br>"+
+"Teléfono: (669) 1196400<br>"+
+"No. de Estación: 10761<br>";
+var infowindowg = new google.maps.InfoWindow({
+    content: contentStringg
+  });
+var myLatlng = new google.maps.LatLng(23.2611, -106.37923);
+var markerg = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerg.addListener('click', function() {
+    infowindowg.open(map, markerg);
+  });
+markerg.setMap(map);
+//-------------
+var contentStringh = "<b>H) Múnich</b><br>"+
+"Av. Múnich #1404<br>"+
+"Col. Jaripillo, Mazatlán Sinaloa<br>"+
+"CP 82136<br>"+
+"Teléfono: (669) 9404221<br>"+
+"No. de Estación: 9990<br>";
+var infowindowh = new google.maps.InfoWindow({
+    content: contentStringh
+  });
+var myLatlng = new google.maps.LatLng(23.25973, -106.39611);
+var markerh = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerh.addListener('click', function() {
+    infowindowh.open(map, markerh);
+  });
+markerh.setMap(map);
+//-------------
+var contentStringi = "<b>I) El Rosario</b><br>"+
+"Mineros y Gabriel Leyva SN<br>"+
+"Col. Panteón, El Rosario Sinaloa<br>"+
+"CP 82802<br>"+
+"Teléfono: (694) 9526363<br>"+
+"No. de Estación: 11864<br>";
+var infowindowi = new google.maps.InfoWindow({
+    content: contentStringi
+  });
+var myLatlng = new google.maps.LatLng(22.99346, -105.86068);
+var markeri = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markeri.addListener('click', function() {
+    infowindowi.open(map, markeri);
+  });
+markeri.setMap(map);
+//-------------
+var contentStringj = "<b>J) Seminario</b><br>"+
+"Av. Oscar Pérez Escobosa SN<br>"+
+"Col. El Venadillo, Mazatlán Sinaloa<br>"+
+"CP 82129<br>"+
+"Teléfono: (669) 9301040<br>"+
+"No. de Estación 12001<br>";
+var infowindowj = new google.maps.InfoWindow({
+    content: contentStringj
+  });
+var myLatlng = new google.maps.LatLng(23.27411, -106.41727);
+var markerj = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerj.addListener('click', function() {
+    infowindowj.open(map, markerj);
+  });
+markerj.setMap(map);
+//-------------
+var contentStringk = "<b>K) Escuinapa</b><br>"+
+"José María Morelos #81<br>"+
+"Col. Centro, Escuinapa Sinaloa<br>"+
+"CP 82400<br>"+
+"Teléfono: (695) 9533003<br>"+
+"No. de Estación 12192<br>";
+var infowindowk = new google.maps.InfoWindow({
+    content: contentStringk
+  });
+var myLatlng = new google.maps.LatLng(22.82835, -105.77881);
+var markerk = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerk.addListener('click', function() {
+    infowindowk.open(map, markerk);
+  });
+markerk.setMap(map);
+//-------------
+var contentStringl = "<b>L) Victorica</b><br>"+
+"Av. Juan Carrasco #2 Nte.<br>"+
+"Col. Centro Mazatlán, Mazatlán Sinaloa<br>"+
+"C.P. 82000<br>"+
+"Tel. (669) 9103389<br>"+
+"No. de Estación 01768<br>";
+var infowindowl = new google.maps.InfoWindow({
+    content: contentStringl
+  });
+var myLatlng = new google.maps.LatLng(23.20658, -106.4199);
+var markerl = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerl.addListener('click', function() {
+    infowindowl.open(map, markerl);
+  });
+markerl.setMap(map);
+//-------------
+var contentStringm = "<b>M) El Diez</b><br>"+
+"Carret. El Dorado # 11101 Sur<br>"+
+"Campo El Diez, Culiacán Sinaloa<br>"+
+"CP 80300<br>"+
+"Teléfono: (667) 7605990<br>"+
+"No. de Estación 5083<br>";
+var infowindowm = new google.maps.InfoWindow({
+    content: contentStringm
+  });
+var myLatlng = new google.maps.LatLng(24.71581, -107.44741);
+var markerm = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerm.addListener('click', function() {
+    infowindowm.open(map, markerm);
+  });
+markerm.setMap(map);
+//-------------
+var contentStringn = "<b>N) Humaya</b><br>"+
+"Blvd. Enrique Félix Castro #3029 Pte.<br>"+
+"Col. Infonavit Humaya, Culiacán Sinaloa<br>"+
+"CP 80020<br>"+
+"Teléfono: (667) 7503845<br>"+
+"No. de Estación 7759<br>";
+var infowindown = new google.maps.InfoWindow({
+    content: contentStringn
+  });
+var myLatlng = new google.maps.LatLng(24.82449, -107.41699);
+var markern = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markern.addListener('click', function() {
+    infowindown.open(map, markern);
+  });
+markern.setMap(map);
+//-------------
+var contentStringo = "<b>O) Los Mochis</b><br>"+
+"Blvd. Macario Gaxiola Sur # 1500<br>"+
+"Fracc. Alamos, Los Mochis Sinaloa<br>"+
+"CP 81280<br>"+
+"Teléfono: (668) 8241718<br>"+
+"No. de Estación 08603<br>";
+var infowindowo = new google.maps.InfoWindow({
+    content: contentStringo
+  });
+var myLatlng = new google.maps.LatLng(25.77081, -108.98978);
+var markero = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markero.addListener('click', function() {
+    infowindowo.open(map, markero);
+  });
+markero.setMap(map);
+//-------------
+var contentStringp = "<b>P) Bellavista</b><br>"+
+"Carretera a Culiacancito #11000 Pte.<br>"+
+"Col. Bellavista, Culiacán Sinaloa<br>"+
+"CP 80301<br>"+
+"Teléfono: (667) 9603434<br>"+
+"No. de Estación: 5156<br>";
+var infowindowp = new google.maps.InfoWindow({
+    content: contentStringp
+  });
+var myLatlng = new google.maps.LatLng(24.8184, -107.48435);
+var markerp = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerp.addListener('click', function() {
+    infowindowp.open(map, markerp);
+  });
+markerp.setMap(map);
+//-------------
+var contentStringq = "<b>Q) Papalote</b><br>"+
+"Av. Alvaro Obregon Norte #3742<br>"+
+"Col. 6 de Enero, Culiacán Sinaloa<br>"+
+"CP 80010<br>"+
+"Teléfono: (667) 753 2975<br>"+
+"No. de Estación: 4180<br>";
+var infowindowq = new google.maps.InfoWindow({
+    content: contentStringq
+  });
+var myLatlng = new google.maps.LatLng(24.75532, -107.38571);
+var markerq = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerq.addListener('click', function() {
+    infowindowq.open(map, markerq);
+  });
+markerq.setMap(map);
+//-------------
+var contentStringr = "<b>R) La Curva</b><br>"+
+"Autopista Culiacán Navolato #597 Pte.<br>"+
+"San Pedro, Culiacán Sinaloa<br>"+
+"CP 80376<br>"+
+"Teléfono: (667) 710 0040<br>"+
+"No. de Estación: 4599<br>";
+var infowindowr = new google.maps.InfoWindow({
+    content: contentStringr
+  });
+var myLatlng = new google.maps.LatLng(24.76803, -107.55829);
+var markerr = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerr.addListener('click', function() {
+    infowindowr.open(map, markerr);
+  });
+markerr.setMap(map);
+//-------------
+var contentStrings = "<b>S) Guasave</b><br>"+
+"Blvd. Luis Donaldo Colosio #264<br>"+
+"Col. Ocoro, Guasave Sinaloa<br>"+
+"CP 81010<br>"+
+"Teléfono: (687) 871 2330 y 871 2440<br>"+
+"No. de Estación: 6476<br>";
+var infowindows = new google.maps.InfoWindow({
+    content: contentStrings
+  });
+var myLatlng = new google.maps.LatLng(25.58517, -108.46331);
+var markers = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markers.addListener('click', function() {
+    infowindows.open(map, markers);
+  });
+markers.setMap(map);
+//-------------
+var contentStringt = "<b>T) Ejército</b><br>"+
+"Calzada H. Colegio Militar #1798<br>"+
+"Col. Emiliano Zapata, Culiacán Sinaloa<br>"+
+"CP 80260<br>"+
+"Teléfono: (667) 7496737<br>"+
+"No. de Estación: 7852<br>";
+var infowindowt = new google.maps.InfoWindow({
+    content: contentStringt
+  });
+var myLatlng = new google.maps.LatLng(24.78886, -107.3723);
+var markert = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markert.addListener('click', function() {
+    infowindowt.open(map, markert);
+  });
+markert.setMap(map);
+}
+	
 // ----------- form contacto
 	$(document).ready(function() {
 $("#formcontacto1").submit(function(){
@@ -451,7 +827,6 @@ var statusRadio=0;
 		<div class="radio" onclick="radiomusic()"><img id="radioPl" src="img/play.png" style="display:block;"><img id="radioPp" src="img/pause.png" style="display:none;"></div>
 	</div>
 	<div id="site-info" class="content-info">
-	
 	<div id="section01" class="hide">
 		<div id="s1-01">
 		<div id="preguntas"><a href="#" onclick="preguntas()"><img src="img/preguntas-icon.png"></a></div>
@@ -470,9 +845,17 @@ var statusRadio=0;
 		</div>
 	</div>
 	<div id="section02" class="hide">
-	<div id="geolocation">
-		<iframe id="mapa-ubicaciones" src="https://www.google.com/maps/d/embed?mid=1vL1MiBsvTnf5UavoAq4AZpXEAyQ&z=6&ll=28.77426615577134,-111.41744995117188&t=m" frameborder="0" style="width:100%;border:0" allowfullscreen></iframe>
+		<div id="gps-message" class="hide">
+			<div id="gps-message-content">
+				<div class="gps-info">
+					Encuentra nuestras Sucursales cerca de ti<br><hr>Activa el GPS y oprima "Continuar"
+				</div>
+				<div class="gps-btn">
+					<div class="btn-active" onclick="ActiveGps()">Continuar</div><div class="btn-cancel" onclick="CancelGps()">Cancelar</div>
+				</div>
+			</div>
 		</div>
+		<div id="geolocation"></div>
 	</div>
 	<div id="section03" class="hide">
 		<div id="grupo-icon" class="icon"><img src="img/gota.png"></div>
