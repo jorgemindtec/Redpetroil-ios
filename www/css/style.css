@@ -128,6 +128,12 @@ button.marcar.puntos {
           opacity: 1;
       }
 }
+#gps-message.hide {
+    display: none;
+}
+#gps-message.display {
+    display: block;
+}
 /* ------------ loading screen ----------- */
 #load {
     background-image: url(../img/screen.png) !important;
@@ -512,7 +518,7 @@ button.marcar.puntos {
     max-height: 130px !important;
 }
 
-/* ---- Efecto de botones ---- **/
+/* ---- Efecto de botones ---- */
 .efecto.o:active {
     background: #ffb06e;
     transition: 2s;
@@ -520,6 +526,51 @@ button.marcar.puntos {
 .efecto.b:active {
     background: #8ac0ff;
     transition: 2s;
+}
+/* ----- GPS ------------- */
+#gps-message {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    bottom: 55px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+#gps-message-content {
+    width: 300px;
+    height: 150px;
+    margin: 0 auto;
+    border: 1px #f6892e solid;
+    background: #ffffff;
+    border-radius: 5px;
+    margin-top: 45%;
+}
+.gps-info {
+    padding: 10px 15px;
+    height: 95px;
+    font-size: 18px;
+    text-align: center;
+}
+.gps-btn {
+    color: white;
+}
+.gps-btn div {
+    display: inline-block;
+    width: 149px;
+    text-align: center;
+    font-size: 18px;
+}
+.btn-active {
+    padding: 7px 0;
+    background: #f6892e;
+    margin-right: 1px;
+    border-radius: 0 0 0 5px;
+}
+.btn-cancel {
+    padding: 7px 0;
+    background: #f6892e;
+    margin-left: 1px;
+    border-radius: 0 0 5px 0;
 }
 /* ----- RESPONSIVO --------- */
 @media screen and (min-width: 700px){
