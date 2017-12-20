@@ -37,6 +37,9 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 	<script type="text/javascript" charset="utf-8" src="js/functions.js"></script>
+	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/sqlite.js"></script>
+    	<script type="text/javascript" charset="utf-8" src="js/jquery-3.2.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<!--<script src="https://maps.googleapis.com/maps/api/js?key=API_KEY_FOR_ANDROID&callback=initMap" async defer></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=True"></script>-->
@@ -47,28 +50,30 @@
     document.addEventListener("deviceready", onDeviceReady, false);
 	
 function onDeviceReady() {
-	    	window.open = cordova.InAppBrowser.open;
-		document.addEventListener("backbutton", BotonBackCel, false);
-		loadscreen(0);
-		setTimeout(function() {
+	window.open = cordova.InAppBrowser.open;
+    console.log(cordova.file);
+	document.addEventListener("backbutton", BotonBackCel, false);
+	document.getElementById("Inicio1").className="hide";
+	loadscreen(0);
+	setTimeout(function() {
         loadscreen(1);
+	document.getElementById("Inicio1").className="display";
     }, 2000);
+	
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
     }
 function loadscreen(dato){
 		if(dato==0){
-			document.getElementById("load").className="display";			
+			document.getElementById("load").className="display";				
 		}
 		else if(dato==1){
-			document.getElementById("load").className="hide";		
+			document.getElementById("load").className="hide";	
 		}
 	}
 function BotonBackCel() {
-		submenu(1);
+		menu(1);
 	}
-
-	var map;
-	var marcador="";
-	var Ubicacion=true;
+	
 	
 function MapaGps(){
 	var GpsOptions = {
@@ -789,25 +794,25 @@ return false;
 });
 }); 
 	</script>
-    <title>Redpetroil</title>
+    <title>Grupo Petroil</title>
 </head>
 
 <body onload="onload()"style="margin: 0;">
 	<div id="load" class="hide"></div>
-	<div id="content" class="page-content petropuntos hide">
-	<div id="header-top"></div>
+	<div id="content" class="page-content"> <!--  petropuntos hide -->
+	<!--<div id="header-top"></div>-->
 	<!-- Page content -->
 	<div class="header">	
 		<div class="tittle">
-		<div id="tittle01" class="display"><p>Petropuntos<sup style="font-size: 10px;">®</sup></p></div>
+		<div id="tittle01" class="hide"><p>Rendimiento</p></div>
 		<div id="tittle02" class="hide"><p>Ubicaciones</p></div>
 		<div id="tittle03" class="hide"><p>Grupo Petroil</p></div>
+		<div id="tittle04" class="hide"><p>Petropuntos</p></div>
 		</div>
 		<audio id="stream" preload>
 		<source src="http://108.163.164.122:9000/redpetroilmp3" type="audio/mpeg"></audio>
-		<script> 
-		
-var statusRadio=0;
+		<script> 		
+		var statusRadio=0;
 		function radiomusic(){
 		
 	if(statusRadio==0){
@@ -827,14 +832,93 @@ var statusRadio=0;
 		<div class="radio" onclick="radiomusic()"><img id="radioPl" src="img/play.png" style="display:block;"><img id="radioPp" src="img/pause.png" style="display:none;"></div>
 	</div>
 	<div id="site-info" class="content-info">
+	<div id="section00" class="hide">
+		<div id="s0-01" class="hide">
+		<div class="icon"><img src="img/gota.png"></div>
+		<div class="form-registro">
+		<div id="Rendimiento">
+			<div id="Inicio1" class="hide">
+			<h3 style="text-align: center;">INICIAR VIAJE</h3>
+			<div style="margin-bottom: 20px;">
+			Para continuar, deberá de ingresar el precio del litro del combustible que va a adquirir (Magna / Premium / Diésel).
+			</div>
+			<!--<fieldset class="dataform" data-role="fieldcontain" data-type="horizontal" id="registro" style="border:none;">-->
+				<div class="texto-registro" style="background: #f6892e;">Concepto de Ruta</div>
+				<div><input id="ruta" class="campo-registro" type="text" name="ruta" placeholder="Viaje a..." ></div>
+				<div class="texto-registro" style="background: #008D36;">Precio Magna</div>
+				<div><input id="magna" class="campo-registro" type="number" name="magna" min="0" step="any" placeholder="0.00"></div>
+				<div class="texto-registro" style="background: #BE1621;">Precio Premium</div>
+				<div><input id="premium" class="campo-registro" type="number" name="premium" min="0" step="any" placeholder="0.00"></div>
+				<div class="texto-registro" style="background: #1C1C1B;">Precio Diésel</div>
+				<div><input id="diesel" class="campo-registro" type="number" name="diesel" min="0" step="any" placeholder="0.00"></div>
+				<div onclick="validarViaje(1)" class="sig-2">Siguiente</div>
+				<div style="width: 100%;height: 55px;"></div>
+			</div>
+			
+			<div id="Inicio2" class="hide">
+				<a href="#" class="return form-contact" onclick="rendimiento(1)"><img src="img/back.png"></a>
+				Ingrese el Modelo del auto a utilizar en el viaje.
+				<div style="text-align: center;"><input id="modelo" type="text" name="modelo" placeholder="MODELO DEL AUTO"></div>
+				Nivel de carga actual:
+				<div style="text-align: center;"><div id="img-indicador" class="cero"></div></div>
+				<div style="text-align: center;height: 24px;"><label class="texto-viaje">Litros a cargar:</label></div>
+				<div style="text-align: center;"><input id="litros" type="number" name="litros" min="0" step="any" placeholder="0.00" onkeyup="Indicador()">
+				<select id="combustible" name="combustible">
+					<option value="Magna">Magna</option>
+					<option value="Premium">Premium</option>
+					<option value="Diesel">Diésel</option>
+				</select></div>
+				<div style="text-align: center;height: 24px;"><label class="texto-viaje">Kilometraje actual del vehiculo:</label></div>
+				<div><input id="kilometrajeinicial" type="number" name="kilometrajeinicial" min="0" step="any" placeholder="0"></div>
+				
+				<div style="text-align: center;"><button class="boton-rendimiento" id="SendRendimiento" onclick="validarViaje(2)"/>Iniciar Viaje</button></div>
+				<div style="width: 100%;height: 55px;"></div>
+			</div>
+			
+			<div id="Inicio3" class="hide">
+				<h3 style="text-align: center;">FINALIZAR VIAJE</h3>
+			<div style="margin-bottom: 20px;">
+			Seleccione el viaje a finalizar.
+			</div>
+			<div id="opciones-viaje">
+				<select id="viajedt"></select>
+			</div>
+			
+				<div style="text-align: center;height: 24px;"><label class="texto-viaje">Kilometraje actual del vehiculo:</label></div>
+				<div><input id="kilometrajefinal" type="number" name="kilometrajefinal" min="0" step="any" placeholder="0"></div>
+				
+				<div style="text-align: center;"><button class="boton-rendimiento" id="UpdateRendimiento" onclick="validarViaje(3)"/>Finalizar Viaje</button></div>
+			</div>
+			
+			<div id="Reporte" class="hide">
+				<div style="margin-bottom: 20px;">
+				Para conocer el Rendimiento, seleccione del Historial de Rendimiento el viaje a calcular.
+				</div>
+				<div class="texto-registro" style="background: #BE1621;width: 160px !important;">Rendimiento en Litros</div>
+				<div><input id="rendimientolitros" class="campo-registro" type="text" name="rendimientolitros" placeholder="0 km x Litro" disabled></div>
+				
+				<h3 style="text-align: center;">HISTORIAL DE RENDIMIENTO</h3>
+				<div style="width: 100%;max-height: 650px;overflow-y: scroll;">
+				<table id="Datos">
+				</table>
+				</div>
+				
+				<!--<div style="text-align: center;"><button id="Exportar" onclick="Exportar()">Exportar Datos</button></div>-->	
+				<div style="width: 100%;height: 55px;"></div>
+			</div>
+			
+		</div>
+		</div>
+		</div>
+	</div>
 	<div id="section01" class="hide">
 		<div id="s1-01">
 		<div id="preguntas"><a href="#" onclick="preguntas()"><img src="img/preguntas-icon.png"></a></div>
 		<div class="icon"><img src="img/gota.png"></div>
-		<div class="request-id">
+		<!--<div class="request-id">
 			<div class="id-points efecto"><button class="marcar index" onclick="TelefonoConsulta()">Consultar Petropuntos</button></div>
 			<div class="id-points-button efecto o"><a href="#" onclick="var ref = cordova.InAppBrowser.open('http://www.redpetroil.com/obtener-tarjeta/', '_blank', 'location=yes');"><p>Solicítala Ahora</p></a></div>
-		</div>
+		</div>-->
 		</div>
 		<div id="s1-02">
 		<div class="content-img"><img class="img-puntos" src="img/puntos.png"></div>
@@ -1041,7 +1125,7 @@ var statusRadio=0;
 	<div id="section04" class="hide">
 		<div class="icon"><img src="img/gota.png"></div>
 		<div class="info">
-			<a href="#" class="return" onclick="submenu(1)"><img src="img/back.png"></a>
+			<a href="#" class="return" onclick="submenu(2)"><img src="img/back.png"></a>
 			<h1>¿POR QUÉ SOLICITARLA?</h1>
 			<p>Con tu tarjeta acumularás PETROPUNTOS<sup style="font-size: 10px;">®</sup> para canjearlos por premios. Cada vez que cargues combustible con nosotros asegúrate de mostrar tu tarjeta
 			al despachador de combustible antes de cargar.</p>
@@ -1070,14 +1154,14 @@ var statusRadio=0;
 			</table>
 		</div>
 	</div>
-	<div id="contacto" class="display">
+	<div id="contacto" class="hide">
 		<div class="icon"><img src="img/gota.png"></div>
 		<div class="info">
 			<h1>Contáctanos</h1><br>	
 		</div>
 		<div  id="contact-info">
 		<div id="form1" class="hide">
-		<a href="#" class="return form-contact" onclick="submenu(1)"><img src="img/back.png"></a>
+		<a href="#" class="return form-contact" onclick="menu(1)"><img src="img/back.png"></a>
 		<form id="formcontacto1" method="post">
 		<fieldset class="dataform" data-role="fieldcontain" data-type="horizontal" id="insertfrm" style="border:none;">
 				<input id="nombre" class="campo-contacto" type="text" name="nombre" placeholder="Nombre" ><br>
@@ -1154,23 +1238,27 @@ var statusRadio=0;
 	<!-- hidden menu -->
 	<div id="toggle-menu" class="toggle-menu hide"> 
 		<div id="more-elements" class="sub-elements">
-			<div class="sub-menu" onclick="submenu(2)"><a href="#">Contacto</a></div>
+			<div class="sub-menu" onclick="submenu(3)"><a href="#">Contacto</a></div>
 			<div class="espacio-menu"></div>
-			<div class="sub-menu" onclick="submenu(1)"><a href="#">Inicio</a></div>
+			<div class="sub-menu" onclick="submenu(2)"><a href="#">Petropuntos</a></div>
+			<div class="espacio-menu"></div>
+			<div class="sub-menu" onclick="submenu(1)"><a href="#">Reporte</a></div>
+			<div class="espacio-menu"></div>
+			<div class="sub-menu" onclick="submenu(0)"><a href="#">Fin Viaje</a></div>
 			<div class="espacio-menu"></div>
 		</div>	
 	</div>
 	<!-- end -->
 	<!-- footer menu -->
-	<div id ="menu" class="menu-footer hide">  
-		<table class="menu-elements"> 
+	<div id ="menu" class="menu-footer hide">
+		<table class="menu-elements">
 		<tr class="menu-img">
-			<td id="menu01" class="element" onclick="menu(1);"><img src="img/icon01.png"><br>Mis Puntos</td>
-			<td style="background:white;width:1px;height:100%";></td> 
+			<td id="menu01" class="element" onclick="menu(1);"><img src="img/icon01.png"><br>Rendimiento</td>
+			<td style="background:white;width:1px;height:100%;"></td> 
 			<td id="menu02" class="element" onclick="menu(2);"><img src="img/icon02.png"><br>Ubicaciones</td>
-			<td style="background:white;width:1px;height:100%";></td>
+			<td style="background:white;width:1px;height:100%;"></td>
 			<td id="menu03" class="element" onclick="menu(3);"><img src="img/icon03.png"><br>Grupo Petroil</td>
-			<td style="background:white;width:1px;height:100%";></td>
+			<td style="background:white;width:1px;height:100%;"></td>
 			<td id="menu04" class="element pluss" onclick="show();"><img src="img/icon04.png"><br>Más</td>
 		</tr>
 		</table>
