@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="grupopetroil" version="2.1.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="grupopetroil" version="3.0.0">
   <name>Grupo Petroil</name>
   <description>Aplicación informativa Grupo Petroil.</description>
   <author href="http://mindtec.com.mx/" email="contacto@mindtec.com.mx">Mindtec Software Revolution</author>
@@ -20,7 +20,13 @@
   <feature name="InAppBrowser">
     <param name="ios-package" value="CDVInAppBrowser" />
   </feature>
-
+  <!--
+  <plugin name="File" value="CDVFile" />
+  <plugin name="FileTransfer" value="CDVFileTransfer" />
+  
+  <plugin name="File" value="org.apache.cordova.FileUtils" />
+<plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" />-->  
+  
   <feature name="http://api.phonegap.com/1.0/network" />
   <access origin="*" onlyInBrowser="true" />
   
