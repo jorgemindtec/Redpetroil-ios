@@ -39,7 +39,7 @@
 	<script type="text/javascript" charset="utf-8" src="js/functions.js"></script>
 	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/sqlite.js"></script>
-    	<script type="text/javascript" charset="utf-8" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery-3.2.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<!--<script src="https://maps.googleapis.com/maps/api/js?key=API_KEY_FOR_ANDROID&callback=initMap" async defer></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=True"></script>-->
@@ -57,7 +57,7 @@ function onDeviceReady() {
 	loadscreen(0);
 	setTimeout(function() {
         loadscreen(1);
-	document.getElementById("Inicio1").className="display";
+		document.getElementById("Inicio1").className="display";
     }, 2000);
 	
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
@@ -443,6 +443,56 @@ var infowindowt = new google.maps.InfoWindow({
     content: contentStringt
   });
 var myLatlng = new google.maps.LatLng(24.78886, -107.3723);
+var markert = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markert.addListener('click', function() {
+    infowindowt.open(map, markert);
+  });
+markert.setMap(map);
+}
+//-------------
+var contentStringt = "<b>U) Dos Valles</b><br>"+
+"Blvd. Luis Donaldo Colosio #264<br>"+
+"Col. Ocoro, Guasave Sinaloa<br>"+
+"CP 81010<br>"+
+"Teléfono: (687) 8712330 y 8712440br>"+
+"No. de Estación: 6476<br>";
+var infowindowt = new google.maps.InfoWindow({
+    content: contentStringt
+  });
+var myLatlng = new google.maps.LatLng(25.5851723, -108.46331129999999);
+var markert = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markert.addListener('click', function() {
+    infowindowt.open(map, markert);
+  });
+markert.setMap(map);
+}
+//-------------
+var contentStringt = "<b>V) Fátima</b><br>"+
+"General Angel Flores #983<br>"+
+"Col. Centro, Fátima, Los Mochis Sinaloa<br>"+
+"CP 81200<br>"+
+"Teléfono: (668) 8152676<br>"+
+"No. de Estación: 9883<br>";
+var infowindowt = new google.maps.InfoWindow({
+    content: contentStringt
+  });
+var myLatlng = new google.maps.LatLng(25.8017823, -108.987469);
+var markert = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markert.addListener('click', function() {
+    infowindowt.open(map, markert);
+  });
+markert.setMap(map);
+}
+//-------------
+var contentStringt = "<b>W) Alhuey</b><br>"+
+"Autopista Culiacán - Los Mochis KM 109+738<br>"+
+"Guamúchil Sinaloa<br>"+
+"Teléfono: (697) 7340300<br>"+
+"No. de Estación: 4618<br>";
+var infowindowt = new google.maps.InfoWindow({
+    content: contentStringt
+  });
+var myLatlng = new google.maps.LatLng(25.3937652, -108.1311065);
 var markert = new google.maps.Marker({position: myLatlng,map: map,icon: images});
   markert.addListener('click', function() {
     infowindowt.open(map, markert);
