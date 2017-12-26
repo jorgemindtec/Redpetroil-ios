@@ -471,5 +471,3 @@ function sender(dato){
 	document.getElementById("form7").className="display";		
 	}	
 }
-
-
