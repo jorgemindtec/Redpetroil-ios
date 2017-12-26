@@ -51,7 +51,6 @@
 	
 function onDeviceReady() {
 	window.open = cordova.InAppBrowser.open;
-    console.log(cordova.file);
 	document.addEventListener("backbutton", BotonBackCel, false);
 	document.getElementById("Inicio1").className="hide";
 	loadscreen(0);
@@ -60,7 +59,6 @@ function onDeviceReady() {
 		document.getElementById("Inicio1").className="display";
     }, 2000);
 	
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
     }
 function loadscreen(dato){
 		if(dato==0){
@@ -88,13 +86,12 @@ function Gpson(position){
 	var lat=position.coords.latitude;
 	var lang=position.coords.longitude;
 	var myLatlng = new google.maps.LatLng(lat,lang);
-if(Ubicacion==true){
+	
 	var mapOptions = {zoom: 13,center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP};
 	map = new google.maps.Map(document.getElementById('geolocation'), mapOptions);	
 	marcador = new google.maps.Marker({position: myLatlng,map: map});
 	marcador.setMap(map);
-	Ubicacion=false;
-}
+
 setInterval(function(){
 	marcador.setMap(null);
 	marcador = new google.maps.Marker({position: myLatlng,map: map});
@@ -106,9 +103,8 @@ setInterval(function(){
 	Ubicaciones();	
 }
 function GpsError(error) {
+	//marcador.setMap(null);
 	document.getElementById("gps-message").className="display";
-	marcador.setMap(null);
-	
 	var myLatlng = new google.maps.LatLng(24.67697,-107.166138);
 	var mapOptions = {zoom: 7,center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP};
 	map = new google.maps.Map(document.getElementById('geolocation'), mapOptions);
@@ -122,7 +118,7 @@ function ActiveGps(){
 	MapaGps()
 	}
 function CancelGps(){
-	document.getElementById("gps-message").className="hide";	
+	document.getElementById("gps-message").className="hide";
 	}
 // --------
 function Ubicaciones(){
@@ -448,7 +444,6 @@ var markert = new google.maps.Marker({position: myLatlng,map: map,icon: images})
     infowindowt.open(map, markert);
   });
 markert.setMap(map);
-}
 //-------------
 var contentStringt = "<b>U) Dos Valles</b><br>"+
 "Blvd. Luis Donaldo Colosio #264<br>"+
@@ -459,13 +454,12 @@ var contentStringt = "<b>U) Dos Valles</b><br>"+
 var infowindowt = new google.maps.InfoWindow({
     content: contentStringt
   });
-var myLatlng = new google.maps.LatLng(25.5851723, -108.46331129999999);
-var markert = new google.maps.Marker({position: myLatlng,map: map,icon: images});
-  markert.addListener('click', function() {
-    infowindowt.open(map, markert);
+var myLatlng = new google.maps.LatLng(25.58517, -108.4633);
+var markeru = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markeru.addListener('click', function() {
+    infowindowt.open(map, markeru);
   });
-markert.setMap(map);
-}
+markeru.setMap(map);
 //-------------
 var contentStringt = "<b>V) Fátima</b><br>"+
 "General Angel Flores #983<br>"+
@@ -476,13 +470,12 @@ var contentStringt = "<b>V) Fátima</b><br>"+
 var infowindowt = new google.maps.InfoWindow({
     content: contentStringt
   });
-var myLatlng = new google.maps.LatLng(25.8017823, -108.987469);
-var markert = new google.maps.Marker({position: myLatlng,map: map,icon: images});
-  markert.addListener('click', function() {
-    infowindowt.open(map, markert);
+var myLatlng = new google.maps.LatLng(25.80178, -108.98746);
+var markerv = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerv.addListener('click', function() {
+    infowindowt.open(map, markerv);
   });
-markert.setMap(map);
-}
+markerv.setMap(map);
 //-------------
 var contentStringt = "<b>W) Alhuey</b><br>"+
 "Autopista Culiacán - Los Mochis KM 109+738<br>"+
@@ -492,12 +485,12 @@ var contentStringt = "<b>W) Alhuey</b><br>"+
 var infowindowt = new google.maps.InfoWindow({
     content: contentStringt
   });
-var myLatlng = new google.maps.LatLng(25.3937652, -108.1311065);
-var markert = new google.maps.Marker({position: myLatlng,map: map,icon: images});
-  markert.addListener('click', function() {
-    infowindowt.open(map, markert);
+var myLatlng = new google.maps.LatLng(25.39376, -108.13110);
+var markerw = new google.maps.Marker({position: myLatlng,map: map,icon: images});
+  markerw.addListener('click', function() {
+    infowindowt.open(map, markerw);
   });
-markert.setMap(map);
+markerw.setMap(map);
 }
 	
 // ----------- form contacto
