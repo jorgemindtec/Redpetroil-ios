@@ -1,14 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="grupopetroil" version="3.0.1">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="grupopetroil" version="3.0.2">
   <name>Grupo Petroil</name>
   <description>Aplicación informativa Grupo Petroil.</description>
   <author href="http://mindtec.com.mx/" email="contacto@mindtec.com.mx">Mindtec Software Revolution</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   
-  <feature name="Geolocation">
+  <!--<plugin name="Cordova-open-native-settings" spec="1.2" />-->
+  
+<!--  <feature name="Geolocation">
     <param name="android-package" value="org.apache.cordova.GeoBroker" />
-</feature>
+</feature>-->
   <plugin name="cordova-plugin-geolocation" spec="2.4.3" />
   <feature name="Geolocation">
     <param name="ios-package" value="CDVLocation" />
@@ -18,6 +20,22 @@
   <feature name="InAppBrowser">
     <param name="ios-package" value="CDVInAppBrowser" />
   </feature>
+  
+ <!-- <gap:config-file platform="ios" parent="NSLocationAlwaysUsageDescription" overwrite="false">
+<array>
+  <string>NSLocationAlwaysUsageDescription</string>
+</array>-->
+
+<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+    <string>need location access to find things nearby</string>
+</edit-config>
+  
+  <!--
+  <plugin name="File" value="CDVFile" />
+  <plugin name="FileTransfer" value="CDVFileTransfer" />
+  
+  <plugin name="File" value="org.apache.cordova.FileUtils" />
+<plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" />-->  
   
   <feature name="http://api.phonegap.com/1.0/network" />
   <access origin="*" onlyInBrowser="true" />
@@ -29,14 +47,14 @@
   <icon src="img/icon-60.png"            gap:platform="ios"        width="60" height="60" />  
   <icon src="img/icon-72.png"            gap:platform="ios"        width="72" height="72" />
   <icon src="img/icon-76.png"            gap:platform="ios"        width="76" height="76" />
+  <icon src="img/icon-512.png"           gap:platform="ios"        width="512" height="512" />
   <icon src="img/icon-40-2x.png"         gap:platform="ios"        width="80" height="80" />
   <icon src="img/icon-50-2x.png"         gap:platform="ios"        width="100" height="100" />
   <icon src="img/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
   <icon src="img/icon-60-2x.png"         gap:platform="ios"        width="120" height="120" />
   <icon src="img/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
   <icon src="img/icon-76-2x.png"         gap:platform="ios"        width="152" height="152" />
-  <icon src="img/icon-512.png"         gap:platform="ios"        width="512" height="512" />
-  <icon src="img/icon-512-2x.png"         gap:platform="ios"        width="1024" height="1024" />
+  <icon src="img/icon-512-2x.png"        gap:platform="ios"        width="1024" height="1024" />
   
   <access origin="*"/>
   <access origin="http://108.163.164.122:9000/redpetroilmp3" />
