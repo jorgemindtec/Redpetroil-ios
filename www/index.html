@@ -75,7 +75,7 @@ function BotonBackCel() {
 	}
 	
 	
-function MapaGps(){
+/*function MapaGps(){
 	var GpsOptions = {
   enableHighAccuracy: true,
   timeout: 2800,
@@ -112,15 +112,21 @@ function GpsError(error) {
 	map = new google.maps.Map(document.getElementById('geolocation'), mapOptions);
 	
 	Ubicaciones();
-}
+}*/
 
 //-------------
-function ActiveGps(){
+/*function ActiveGps(){
 	document.getElementById("gps-message").className="hide";
 	MapaGps()
-	}
+	}*/
 function CancelGps(){
 	document.getElementById("gps-message").className="hide";
+//-----------------------------------------------
+	var myLatlng = new google.maps.LatLng(24.67697,-107.166138);
+	var mapOptions = {zoom: 7,center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP};
+	map = new google.maps.Map(document.getElementById('geolocation'), mapOptions);
+	
+	Ubicaciones()
 	}
 // --------
 function Ubicaciones(){
@@ -977,10 +983,12 @@ return false;
 		<div id="gps-message" class="hide">
 			<div id="gps-message-content">
 				<div class="gps-info">
-					Encuentra nuestras Sucursales cerca de ti<br><hr>Activa el GPS y oprima "Continuar"
+					<!--Encuentra nuestras Sucursales cerca de ti<br><hr>Activa el GPS y oprima "Continuar"-->
+					Encuentra nuestras Sucursales cerca de ti
 				</div>
 				<div class="gps-btn">
-					<div class="btn-active" onclick="ActiveGps()">Continuar</div><div class="btn-cancel" onclick="CancelGps()">Cancelar</div>
+					<!--<div class="btn-active" onclick="ActiveGps()">Continuar</div><div class="btn-cancel" onclick="CancelGps()">Cancelar</div>-->
+					<div class="btn-active" onclick="CancelGps()">Continuar</div>
 				</div>
 			</div>
 		</div>
