@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="grupopetroil" version="3.0.2">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="grupopetroil" version="3.0.3">
   <name>Grupo Petroil</name>
   <description>Aplicación informativa Grupo Petroil.</description>
   <author href="http://mindtec.com.mx/" email="contacto@mindtec.com.mx">Mindtec Software Revolution</author>
@@ -11,10 +11,11 @@
 <!--  <feature name="Geolocation">
     <param name="android-package" value="org.apache.cordova.GeoBroker" />
 </feature>-->
+<!--
   <plugin name="cordova-plugin-geolocation" spec="2.4.3" />
   <feature name="Geolocation">
     <param name="ios-package" value="CDVLocation" />
-</feature>
+</feature>-->
   
   <plugin name="cordova-plugin-inappbrowser" spec="1.7.1" />
   <feature name="InAppBrowser">
@@ -24,18 +25,11 @@
  <!-- <gap:config-file platform="ios" parent="NSLocationAlwaysUsageDescription" overwrite="false">
 <array>
   <string>NSLocationAlwaysUsageDescription</string>
-</array>-->
+</array>
 
 <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
     <string>need location access to find things nearby</string>
-</edit-config>
-  
-  <!--
-  <plugin name="File" value="CDVFile" />
-  <plugin name="FileTransfer" value="CDVFileTransfer" />
-  
-  <plugin name="File" value="org.apache.cordova.FileUtils" />
-<plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" />-->  
+</edit-config>-->
   
   <feature name="http://api.phonegap.com/1.0/network" />
   <access origin="*" onlyInBrowser="true" />
