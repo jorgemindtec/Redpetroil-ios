@@ -64,7 +64,8 @@ function menu(dato){
 		document.getElementById("tittle02").className="display";
 		document.getElementById("tittle03").className="hide";
 		document.getElementById("tittle04").className="hide";
-		MapaGps();
+		//MapaGps();
+		CancelGps();
 	}
 	else if(dato==3){
 		document.getElementById("menu03").style.backgroundColor="#f6892e";
@@ -471,3 +472,5 @@ function sender(dato){
 	document.getElementById("form7").className="display";		
 	}	
 }
+
+
