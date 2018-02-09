@@ -65,7 +65,7 @@ function menu(dato){
 		document.getElementById("tittle03").className="hide";
 		document.getElementById("tittle04").className="hide";
 		//MapaGps();
-		CancelGps();
+		//CancelGps();
 	}
 	else if(dato==3){
 		document.getElementById("menu03").style.backgroundColor="#f6892e";
