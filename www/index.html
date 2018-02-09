@@ -118,7 +118,7 @@ function GpsError(error) {
 /*function ActiveGps(){
 	document.getElementById("gps-message").className="hide";
 	MapaGps()
-	}*/
+	}*//*
 function CancelGps(){
 	document.getElementById("gps-message").className="hide";
 //-----------------------------------------------
@@ -457,7 +457,7 @@ var contentStringt = "<b>U) Dos Valles</b><br>"+
 "Blvd. Luis Donaldo Colosio #264<br>"+
 "Col. Ocoro, Guasave Sinaloa<br>"+
 "CP 81010<br>"+
-"Teléfono: (687) 8712330 y 8712440br>"+
+"Teléfono: (687) 8712330 y 8712440<br>"+
 "No. de Estación: 6476<br>";
 var infowindowt = new google.maps.InfoWindow({
     content: contentStringt
@@ -500,7 +500,7 @@ var markerw = new google.maps.Marker({position: myLatlng,map: map,icon: images})
   });
 markerw.setMap(map);
 }
-	
+	*/
 // ----------- form contacto
 	$(document).ready(function() {
 $("#formcontacto1").submit(function(){
@@ -980,19 +980,23 @@ return false;
 		</div>
 	</div>
 	<div id="section02" class="hide">
-		<div id="gps-message" class="hide">
+		<div class="mapa-content">
+			<iframe id="mapa-ubicaciones" src="https://www.google.com/maps/d/u/0/embed?mid=1vL1MiBsvTnf5UavoAq4AZpXEAyQ&z=6&ll=28.77426615577134,-111.41744995117188&t=m" frameborder="0" style="width:100%;border:0" allowfullscreen></iframe>		
+			<div class="mp"></div>
+		</div>
+		<!--<div id="gps-message" class="hide">
 			<div id="gps-message-content">
-				<div class="gps-info">
+				<div class="gps-info">-->
 					<!--Encuentra nuestras Sucursales cerca de ti<br><hr>Activa el GPS y oprima "Continuar"-->
-					Encuentra nuestras Sucursales cerca de ti
+			<!--		Encuentra nuestras Sucursales cerca de ti
 				</div>
-				<div class="gps-btn">
-					<!--<div class="btn-active" onclick="ActiveGps()">Continuar</div><div class="btn-cancel" onclick="CancelGps()">Cancelar</div>-->
-					<div class="btn-active" onclick="CancelGps()">Continuar</div>
+				<div class="gps-btn">-->
+				<!--<div class="btn-active" onclick="ActiveGps()">Continuar</div><div class="btn-cancel" onclick="CancelGps()">Cancelar</div>-->
+				<!--		<div class="btn-active" onclick="CancelGps()">Continuar</div>
 				</div>
 			</div>
 		</div>
-		<div id="geolocation"></div>
+		<div id="geolocation"></div>-->
 	</div>
 	<div id="section03" class="hide">
 		<div id="grupo-icon" class="icon"><img src="img/gota.png"></div>
